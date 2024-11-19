@@ -1,0 +1,6 @@
+timestamp,name,age,image_name,selected_model
+2024-11-19T05:12:40.261579,Muhammad Hamza Zafar,23,butterfly.png,SwinIR
+2024-11-19T05:12:49.943834,Muhammad Hamza Zafar,23,ADE.png,Real-ESRGAN
+2024-11-19T05:12:58.039211,Muhammad Hamza Zafar,23,comic3.png,SwinIR
+2024-11-19T05:13:07.072327,Muhammad Hamza Zafar,23,foreman.png,Real-ESRGAN
+2024-11-19T05:13:11.509657,Muhammad Hamza Zafar,23,oldphoto6.png,ResShift

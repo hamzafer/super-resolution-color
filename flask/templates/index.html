@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Image Quality Assessment Test</title>
     <style>
+        /* General Styles */
         body, html {
             margin: 0;
             padding: 0;
@@ -49,21 +50,6 @@
         .grid-item img:hover {
             transform: scale(1.02);
         }
-        /* Full-Screen Button Styles */
-        .fullscreen-btn {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 32px;
-            height: 32px;
-            opacity: 0.8;
-            cursor: pointer;
-            display: none;
-            transition: opacity 0.3s;
-        }
-        .grid-item:hover .fullscreen-btn {
-            display: block;
-        }
         /* Low-res image in the center */
         #low-res-img {
             position: absolute;
@@ -74,36 +60,6 @@
             height: 256px;
             border: 2px solid #000;
             z-index: 1;
-        }
-        /* Modal styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed;
-            z-index: 30;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.9); /* Black with opacity */
-            cursor: pointer;
-        }
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 90%;
-            cursor: default;
-        }
-        /* Close Button */
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
         }
         /* Selected image highlight */
         .selected {
@@ -183,6 +139,82 @@
             border-radius: 5px;
             z-index: 25;
         }
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 30;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.9); /* Black with opacity */
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        /* Close Button */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        /* Modal Select Button */
+        .modal-select-button {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .modal-select-button:hover {
+            background-color: #45a049;
+        }
+        /* Image Label */
+        .image-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0,0,0,0.5);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        /* Select Button on Images */
+        .select-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: #FFA500;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            opacity: 0.9;
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+        .select-btn:hover {
+            background-color: #FF8C00;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -193,7 +225,7 @@
             Welcome to the Image Quality Assessment Test. You will be presented with a low-resolution image at the center of the screen and four super-resolution images in the corners. Your task is to select the super-resolution image that you believe best enhances the original image's quality.
         </p>
         <p>
-            To view a super-resolution image in detail, hover over it and click the full-screen icon to open it in full-screen mode. After reviewing, click on the image to select it. Once you have made your selection, click the "Submit" button at the bottom to proceed to the next image.
+            To view a super-resolution image in detail, click on it to open it in full-screen mode. To select an image, click the "Select" button labeled with the image number. Once you have made your selection, click the "Submit" button at the bottom to proceed to the next image.
         </p>
         <button onclick="closeInstructions()">Start Test</button>
     </div>
@@ -201,9 +233,11 @@
     <div class="grid-container">
         {% for img in image_set['super_res_images'] %}
         <div class="grid-item {{ img.position }}">
-            <img id="super-res-img-{{ loop.index }}" class="super-res-img" src="{{ url_for('static', filename=img['path']) }}" data-model="{{ img['model'] }}" alt="{{ img['model'] }}">
-            <!-- Full-Screen Button -->
-            <img src="{{ url_for('static', filename='images/fullscreen_icon.png') }}" alt="Full Screen" class="fullscreen-btn" onclick="openModal('{{ url_for('static', filename=img['path']) }}', '{{ img['model'] }}'); event.stopPropagation();">
+            <img id="super-res-img-{{ loop.index }}" class="super-res-img" src="{{ url_for('static', filename=img['path']) }}" data-model="{{ img['model'] }}" data-index="{{ loop.index }}" alt="{{ img['model'] }}" onclick="openModal('{{ url_for('static', filename=img['path']) }}', '{{ img['model'] }}')">
+            <!-- Image Label -->
+            <div class="image-label">Image {{ loop.index }}</div>
+            <!-- Select Button -->
+            <button class="select-btn" onclick="selectImage('{{ img['model'] }}', {{ loop.index }})">Select Image {{ loop.index }}</button>
         </div>
         {% endfor %}
         <!-- Low-Resolution Image in Center -->
@@ -212,8 +246,10 @@
 
     <!-- Modal Structure -->
     <div id="myModal" class="modal">
-        <span class="close">&times;</span>
+        <span class="close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="modal-img">
+        <!-- Modal Select Button -->
+        <button class="modal-select-button" onclick="selectImageFromModal()">Select This Image</button>
     </div>
 
     <!-- Error Message -->
@@ -242,11 +278,9 @@
         }
 
         // Function to close modal
-        function closeModal(event) {
+        function closeModal() {
             var modal = document.getElementById("myModal");
-            if (event.target.id === "myModal" || event.target.className === "close") {
-                modal.style.display = "none";
-            }
+            modal.style.display = "none";
         }
 
         // Close modal on Esc key
@@ -257,9 +291,16 @@
             }
         });
 
-        // Function to handle image selection from modal
-        var modalImg = document.getElementById("modal-img");
-        modalImg.onclick = function() {
+        // Function to select image from modal
+        function selectImageFromModal() {
+            var modalImg = document.getElementById("modal-img");
+            var model = modalImg.dataset.model;
+            selectImage(model);
+            closeModal();
+        }
+
+        // Function to select image
+        function selectImage(model, index) {
             // Remove previous selection
             var superResImages = document.querySelectorAll('.super-res-img');
             superResImages.forEach(function(img) {
@@ -267,16 +308,13 @@
             });
 
             // Highlight the selected image
-            var selectedImage = document.querySelector(`.super-res-img[data-model='${modalImg.dataset.model}']`);
+            var selectedImage = document.querySelector(`.super-res-img[data-model='${model}']`);
             if (selectedImage) {
                 selectedImage.classList.add('selected');
             }
 
             // Set selected model in form
-            document.getElementById('selected_model').value = modalImg.dataset.model;
-
-            // Close the modal
-            document.getElementById("myModal").style.display = "none";
+            document.getElementById('selected_model').value = model;
         }
 
         // Function to close instructions overlay
@@ -294,29 +332,6 @@
             } else {
                 document.getElementById("instruction-overlay").style.display = "none";
             }
-
-            // Add event listeners to images for selection
-            var images = document.querySelectorAll('.super-res-img');
-            images.forEach(function(img) {
-                img.addEventListener('click', function() {
-                    // Remove previous selection
-                    images.forEach(function(i) {
-                        i.classList.remove('selected');
-                    });
-                    // Highlight the selected image
-                    img.classList.add('selected');
-                    // Set selected model in form
-                    document.getElementById('selected_model').value = img.dataset.model;
-                });
-            });
-
-            // Close modal when clicking outside the image
-            var modal = document.getElementById("myModal");
-            modal.addEventListener('click', function(event) {
-                if (event.target.id === "myModal" || event.target.className === "close") {
-                    modal.style.display = "none";
-                }
-            });
         }
     </script>
 </body>
