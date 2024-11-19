@@ -1,0 +1,3 @@
+timestamp,name,age,image_name,model_a,model_b,selected_model
+2024-11-19T10:22:53.520737,CONTROL,23,comic3.png,ResShift,BSRGAN,ResShift
+2024-11-19T10:22:57.753614,CONTROL,23,comic3.png,SwinIR,BSRGAN,SwinIR
