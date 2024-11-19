@@ -47,7 +47,22 @@
             transition: transform 0.3s;
         }
         .grid-item img:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
+        }
+        /* Full-Screen Button Styles */
+        .fullscreen-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            opacity: 0.8;
+            cursor: pointer;
+            display: none;
+            transition: opacity 0.3s;
+        }
+        .grid-item:hover .fullscreen-btn {
+            display: block;
         }
         /* Low-res image in the center */
         #low-res-img {
@@ -178,7 +193,7 @@
             Welcome to the Image Quality Assessment Test. You will be presented with a low-resolution image at the center of the screen and four super-resolution images in the corners. Your task is to select the super-resolution image that you believe best enhances the original image's quality.
         </p>
         <p>
-            To view a super-resolution image in detail, hover over it and click the magnifying glass icon to open it in full-screen mode. After reviewing, click on the image to select it. Once you have made all your selections, click the "Submit" button at the bottom to complete the test.
+            To view a super-resolution image in detail, hover over it and click the full-screen icon to open it in full-screen mode. After reviewing, click on the image to select it. Once you have made your selection, click the "Submit" button at the bottom to proceed to the next image.
         </p>
         <button onclick="closeInstructions()">Start Test</button>
     </div>
@@ -188,7 +203,7 @@
         <div class="grid-item {{ img.position }}">
             <img id="super-res-img-{{ loop.index }}" class="super-res-img" src="{{ url_for('static', filename=img['path']) }}" data-model="{{ img['model'] }}" alt="{{ img['model'] }}">
             <!-- Full-Screen Button -->
-            <img src="{{ url_for('static', filename='images/fullscreen_icon.png') }}" alt="Full Screen" class="fullscreen-btn" onclick="openModal('{{ url_for('static', filename=img['path']) }}', '{{ img['model'] }}')">
+            <img src="{{ url_for('static', filename='images/fullscreen_icon.png') }}" alt="Full Screen" class="fullscreen-btn" onclick="openModal('{{ url_for('static', filename=img['path']) }}', '{{ img['model'] }}'); event.stopPropagation();">
         </div>
         {% endfor %}
         <!-- Low-Resolution Image in Center -->
@@ -196,8 +211,8 @@
     </div>
 
     <!-- Modal Structure -->
-    <div id="myModal" class="modal" onclick="closeModal(event)">
-        <span class="close" onclick="closeModal(event)">&times;</span>
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
         <img class="modal-content" id="modal-img">
     </div>
 
@@ -267,22 +282,42 @@
         // Function to close instructions overlay
         function closeInstructions() {
             document.getElementById("instruction-overlay").style.display = "none";
+            // Store a flag in sessionStorage
+            sessionStorage.setItem('instructionsShown', 'true');
         }
 
-        // Highlight selected image when clicked directly on grid
-        var images = document.querySelectorAll('.super-res-img');
-        images.forEach(function(img) {
-            img.addEventListener('click', function() {
-                // Remove previous selection
-                images.forEach(function(i) {
-                    i.classList.remove('selected');
+        // Check if instructions have been shown before
+        window.onload = function() {
+            // Show instructions only if not shown before
+            if (!sessionStorage.getItem('instructionsShown')) {
+                document.getElementById("instruction-overlay").style.display = "flex";
+            } else {
+                document.getElementById("instruction-overlay").style.display = "none";
+            }
+
+            // Add event listeners to images for selection
+            var images = document.querySelectorAll('.super-res-img');
+            images.forEach(function(img) {
+                img.addEventListener('click', function() {
+                    // Remove previous selection
+                    images.forEach(function(i) {
+                        i.classList.remove('selected');
+                    });
+                    // Highlight the selected image
+                    img.classList.add('selected');
+                    // Set selected model in form
+                    document.getElementById('selected_model').value = img.dataset.model;
                 });
-                // Highlight the selected image
-                img.classList.add('selected');
-                // Set selected model in form
-                document.getElementById('selected_model').value = img.dataset.model;
             });
-        });
+
+            // Close modal when clicking outside the image
+            var modal = document.getElementById("myModal");
+            modal.addEventListener('click', function(event) {
+                if (event.target.id === "myModal" || event.target.className === "close") {
+                    modal.style.display = "none";
+                }
+            });
+        }
     </script>
 </body>
 </html>

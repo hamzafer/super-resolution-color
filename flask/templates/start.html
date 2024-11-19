@@ -29,17 +29,21 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-        .submit-btn {
-            background-color: #4CAF50;
+        .test-selection {
+            margin-top: 20px;
+        }
+        .test-selection button {
+            background-color: #008CBA;
             color: white;
             padding: 12px 24px;
+            margin: 10px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
         }
-        .submit-btn:hover {
-            background-color: #45a049;
+        .test-selection button:hover {
+            background-color: #007BB5;
         }
         .error {
             color: red;
@@ -53,7 +57,10 @@
         <form method="post">
             <input type="text" name="name" placeholder="Enter your name" required><br>
             <input type="number" name="age" placeholder="Enter your age" min="1" required><br>
-            <button type="submit" class="submit-btn">Start Test</button>
+            <div class="test-selection">
+                <button type="submit" name="test_type" value="single">Start Single Image Selection Test</button>
+                <button type="submit" name="test_type" value="pairwise">Start Pairwise Comparison Test</button>
+            </div>
         </form>
         {% if error %}
         <div class="error">{{ error }}</div>

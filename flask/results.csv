@@ -1,0 +1,13 @@
+timestamp,name,age,image_name,selected_model
+2024-11-19T04:56:57.863613,Muhammad Hamza Zafar,23,butterfly.png,ResShift
+2024-11-19T04:57:08.429946,Muhammad Hamza Zafar,23,foreman.png,BSRGAN
+2024-11-19T04:57:18.267202,Muhammad Hamza Zafar,23,comic3.png,BSRGAN
+2024-11-19T04:57:29.215778,Muhammad Hamza Zafar,23,ADE.png,Real-ESRGAN
+2024-11-19T04:57:36.174670,Muhammad Hamza Zafar,23,oldphoto6.png,BSRGAN
+2024-11-19T04:59:50.927762,Muhammad Hamza Zafar,23,oldphoto6.png,BSRGAN
+2024-11-19T05:00:31.555351,Muhammad Hamza Zafar,23,butterfly.png,SwinIR
+2024-11-19T05:01:11.586020,Muhammad Hamza Zafar,23,butterfly.png,ResShift
+2024-11-19T05:01:13.998057,Muhammad Hamza Zafar,23,foreman.png,ResShift
+2024-11-19T05:01:23.381686,Muhammad Hamza Zafar,23,comic3.png,ResShift
+2024-11-19T05:01:28.940334,Muhammad Hamza Zafar,23,ADE.png,Real-ESRGAN
+2024-11-19T05:01:32.926254,Muhammad Hamza Zafar,23,oldphoto6.png,ResShift

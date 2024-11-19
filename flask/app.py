@@ -4,13 +4,14 @@ import random
 import csv
 from datetime import datetime
 from flask_session import Session
+import itertools
 
 app = Flask(__name__)
 
 # Configure secret key for session management
 app.secret_key = 'your_secret_key_here'  # Replace with a secure secret key
 
-# Configure server-side session (optional, for scalability)
+# Configure server-side session
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
@@ -46,7 +47,8 @@ for img_name in image_names:
     low_res_path = os.path.join(LOW_RES_DIR, img_name).replace('static/', '', 1)
     image_sets.append({
         'low_res': low_res_path,
-        'super_res_images': super_res_images
+        'super_res_images': super_res_images,
+        'img_name': img_name
     })
 
 # Route for the start page
@@ -56,20 +58,28 @@ def start():
         # Collect user information
         name = request.form.get('name')
         age = request.form.get('age')
+        test_type = request.form.get('test_type')
 
-        if not name or not age:
-            error = "Please provide both name and age."
+        if not name or not age or not test_type:
+            error = "Please provide name, age, and select a test type."
             return render_template('start.html', error=error)
 
         # Store in session
         session['name'] = name
         session['age'] = age
+        session['test_type'] = test_type
 
-        return redirect(url_for('test'))
+        if test_type == 'single':
+            return redirect(url_for('test'))
+        elif test_type == 'pairwise':
+            return redirect(url_for('pairwise_test'))
+        else:
+            error = "Invalid test type selected."
+            return render_template('start.html', error=error)
 
     return render_template('start.html')
 
-# Route for the test page
+# Route for the single image selection test
 @app.route('/test', methods=['GET', 'POST'])
 def test():
     if 'name' not in session or 'age' not in session:
@@ -83,13 +93,15 @@ def test():
 
         if not selected_model:
             error = "Please select a super-resolution image."
+            index = int(request.form.get('index', 0))
+            current_set = image_sets[index]
             return render_template('index.html', image_set=current_set, index=index, total_images=len(image_sets), error=error)
 
         # Save the result
-        with open('results.csv', 'a', newline='') as csvfile:
+        with open('results_single.csv', 'a', newline='') as csvfile:
             fieldnames = ['timestamp', 'name', 'age', 'image_name', 'selected_model']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            if os.stat('results.csv').st_size == 0:
+            if os.stat('results_single.csv').st_size == 0:
                 writer.writeheader()
             writer.writerow({
                 'timestamp': datetime.now().isoformat(),
@@ -113,6 +125,80 @@ def test():
         return render_template('thank_you.html')
     current_set = image_sets[index]
     return render_template('index.html', image_set=current_set, index=index, total_images=len(image_sets))
+
+# Route for the pairwise comparison test
+@app.route('/pairwise_test', methods=['GET', 'POST'])
+def pairwise_test():
+    if 'name' not in session or 'age' not in session:
+        return redirect(url_for('start'))
+
+    if 'pairwise_data' not in session:
+        # Generate all pairs for each image set
+        pairwise_data = []
+        for idx, image_set in enumerate(image_sets):
+            super_res_images = image_set['super_res_images']
+            pairs = list(itertools.combinations(super_res_images, 2))
+            random.shuffle(pairs)  # Shuffle the pairs
+            for pair in pairs:
+                pairwise_data.append({
+                    'img_name': image_set['img_name'],
+                    'low_res': image_set['low_res'],
+                    'pair': pair,
+                    'set_index': idx
+                })
+        session['pairwise_data'] = pairwise_data
+        session['pairwise_index'] = 0
+
+    pairwise_data = session['pairwise_data']
+    index = session['pairwise_index']
+
+    if request.method == 'POST':
+        selected_model = request.form.get('selected_model')
+        img_name = request.form.get('img_name')
+        name = session.get('name')
+        age = session.get('age')
+        model_a = request.form.get('model_a')
+        model_b = request.form.get('model_b')
+
+        if not selected_model:
+            error = "Please select one of the two images."
+            return render_template('pairwise.html', pairwise_item=pairwise_data[index], index=index, total_pairs=len(pairwise_data), error=error)
+
+        # Save the result
+        with open('results_pairwise.csv', 'a', newline='') as csvfile:
+            fieldnames = ['timestamp', 'name', 'age', 'image_name', 'model_a', 'model_b', 'selected_model']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            if os.stat('results_pairwise.csv').st_size == 0:
+                writer.writeheader()
+            writer.writerow({
+                'timestamp': datetime.now().isoformat(),
+                'name': name,
+                'age': age,
+                'image_name': img_name,
+                'model_a': model_a,
+                'model_b': model_b,
+                'selected_model': selected_model
+            })
+
+        # Move to the next pair or finish
+        index += 1
+        session['pairwise_index'] = index
+
+        if index >= len(pairwise_data):
+            # Clear session data for pairwise test
+            session.pop('pairwise_data', None)
+            session.pop('pairwise_index', None)
+            return render_template('thank_you.html')
+        else:
+            return redirect(url_for('pairwise_test'))
+
+    if index >= len(pairwise_data):
+        # Clear session data for pairwise test
+        session.pop('pairwise_data', None)
+        session.pop('pairwise_index', None)
+        return render_template('thank_you.html')
+
+    return render_template('pairwise.html', pairwise_item=pairwise_data[index], index=index, total_pairs=len(pairwise_data))
 
 # Redirect root to start page
 @app.route('/')
