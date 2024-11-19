@@ -25,13 +25,15 @@ image_sets = []
 for img_name in image_names:
     super_res_images = []
     for model_name, model_path in MODELS.items():
+        img_path = os.path.join(model_path, img_name).replace('static/', '', 1)
         super_res_images.append({
             'model': model_name,
-            'path': f"{model_path}/{img_name}"
+            'path': img_path
         })
     random.shuffle(super_res_images)  # Randomize order of super-res images
+    low_res_path = os.path.join(LOW_RES_DIR, img_name).replace('static/', '', 1)
     image_sets.append({
-        'low_res': f"{LOW_RES_DIR}/{img_name}",
+        'low_res': low_res_path,
         'super_res_images': super_res_images
     })
 
@@ -55,10 +57,7 @@ def index():
             })
 
         # Move to the next image set or finish
-        if 'index' not in request.form:
-            index = 1
-        else:
-            index = int(request.form['index']) + 1
+        index = int(request.form['index']) + 1
 
         if index >= len(image_sets):
             return render_template('thank_you.html')
@@ -69,7 +68,7 @@ def index():
     if index >= len(image_sets):
         return render_template('thank_you.html')
     current_set = image_sets[index]
-    return render_template('index.html', image_set=current_set, index=index)
+    return render_template('index.html', image_set=current_set, index=index, total_images=len(image_sets))
 
 # Run the app
 if __name__ == '__main__':
