@@ -47,23 +47,9 @@
             transform: scale(1.02);
         }
 
-        /* Image Label */
-        .image-label {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: rgba(0,0,0,0.5);
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
         /* Select Button on Images */
         .select-btn {
             position: absolute;
-            bottom: 10px;
-            left: 10px;
             background-color: #FFA500;
             color: white;
             padding: 8px 16px;
@@ -74,9 +60,35 @@
             opacity: 0.9;
             transition: background-color 0.3s, opacity 0.3s;
         }
+
         .select-btn:hover {
             background-color: #FF8C00;
             opacity: 1;
+        }
+
+        /* Positioning Select Buttons Based on Image Positions */
+        /* Top-left image */
+        .grid-item.topleft .select-btn {
+            top: 10px;
+            left: 10px;
+        }
+
+        /* Top-right image */
+        .grid-item.topright .select-btn {
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Bottom-left image */
+        .grid-item.bottomleft .select-btn {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        /* Bottom-right image */
+        .grid-item.bottomright .select-btn {
+            bottom: 10px;
+            right: 10px;
         }
 
         /* Low-res image in the center */
@@ -89,11 +101,6 @@
             height: 256px;
             border: 2px solid #000;
             z-index: 1;
-        }
-
-        /* Selected image highlight */
-        .selected {
-            border: 5px solid red;
         }
 
         /* Error Message */
@@ -121,12 +128,14 @@
             overflow: auto; /* Enable scroll if needed */
             background-color: rgba(0,0,0,0.9); /* Black with opacity */
         }
+
         .modal-content {
             margin: auto;
             display: block;
             max-width: 90%;
             max-height: 90%;
         }
+
         /* Close Button */
         .close {
             position: absolute;
@@ -137,6 +146,7 @@
             font-weight: bold;
             cursor: pointer;
         }
+
         /* Modal Select Button */
         .modal-select-button {
             position: absolute;
@@ -162,21 +172,19 @@
         <!-- Grid Container -->
         <div class="grid-container">
             {% for img in image_set['super_res_images'] %}
-            <div class="grid-item">
+            <div class="grid-item {{ img.position }}">
                 <!-- Image Click Opens Modal -->
                 <img id="super-res-img-{{ loop.index }}" class="super-res-img"
                      src="{{ url_for('static', filename=img['path']) }}"
                      data-model="{{ img['model'] }}" data-index="{{ loop.index }}"
-                     alt="Super Resolution Image {{ loop.index }}"
+                     alt="Super Resolution Image"
                      onclick="openModal('{{ url_for('static', filename=img['path']) }}', '{{ img['model'] }}')">
-                <!-- Image Label -->
-                <div class="image-label">Image {{ loop.index }}</div>
                 <!-- Select Button Form -->
                 <form method="post" class="select-form">
                     <input type="hidden" name="selected_model" value="{{ img['model'] }}">
                     <input type="hidden" name="img_name" value="{{ image_set['low_res'].split('/')[-1] }}">
                     <input type="hidden" name="index" value="{{ index }}">
-                    <button type="submit" class="select-btn">Select Image {{ loop.index }}</button>
+                    <button type="submit" class="select-btn">Select</button>
                 </form>
             </div>
             {% endfor %}
