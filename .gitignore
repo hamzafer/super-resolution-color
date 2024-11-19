@@ -1,3 +1,8 @@
 # Ignore dataset and results folders
 dataset/
 results/
+models/AnimeSR
+models/BSRGAN
+models/ResShift
+models/SwinIR
+models/z-ignored-models/latent-diffusion
