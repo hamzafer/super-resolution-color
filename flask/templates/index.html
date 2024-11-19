@@ -28,7 +28,7 @@
         }
 
         .grid-item {
-            position: relative;
+            position: relative; /* Required for absolute positioning inside */
             width: 50%;
             height: 50%;
             overflow: hidden;
@@ -37,7 +37,7 @@
         .grid-item img.super-res-img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Use 'contain' to prevent cropping */
+            object-fit: contain; /* Prevent cropping */
             background-color: #000; /* Optional: background for letterboxing */
             cursor: pointer;
             transition: transform 0.3s;
@@ -49,7 +49,7 @@
 
         /* Select Button on Images */
         .select-btn {
-            position: absolute;
+            position: absolute; /* Allows alignment within the grid-item */
             background-color: #FFA500;
             color: white;
             padding: 8px 16px;
@@ -66,27 +66,23 @@
             opacity: 1;
         }
 
-        /* Positioning Select Buttons Based on Image Positions */
-        /* Top-left image */
-        .grid-item.topleft .select-btn {
+        /* Positioning Select Buttons in the Corners */
+        .grid-item:nth-child(1) .select-btn {
             top: 10px;
             left: 10px;
         }
 
-        /* Top-right image */
-        .grid-item.topright .select-btn {
+        .grid-item:nth-child(2) .select-btn {
             top: 10px;
             right: 10px;
         }
 
-        /* Bottom-left image */
-        .grid-item.bottomleft .select-btn {
+        .grid-item:nth-child(3) .select-btn {
             bottom: 10px;
             left: 10px;
         }
 
-        /* Bottom-right image */
-        .grid-item.bottomright .select-btn {
+        .grid-item:nth-child(4) .select-btn {
             bottom: 10px;
             right: 10px;
         }
@@ -162,6 +158,7 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         .modal-select-button:hover {
             background-color: #45a049;
         }
@@ -172,7 +169,7 @@
         <!-- Grid Container -->
         <div class="grid-container">
             {% for img in image_set['super_res_images'] %}
-            <div class="grid-item {{ img.position }}">
+            <div class="grid-item">
                 <!-- Image Click Opens Modal -->
                 <img id="super-res-img-{{ loop.index }}" class="super-res-img"
                      src="{{ url_for('static', filename=img['path']) }}"
