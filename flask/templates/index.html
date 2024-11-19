@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Quality Assessment</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .image-container {
+            display: inline-block;
+            position: relative;
+            margin: 10px;
+        }
+        .image-container img {
+            width: 200px;
+            height: auto;
+            transition: transform 0.2s;
+        }
+        .image-container img:hover {
+            transform: scale(2);
+            z-index: 2;
+        }
+        .low-res {
+            margin: 20px;
+        }
+        .submit-button {
+            margin-top: 20px;
+        }
+        .super-res-images {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select the Best Super-Resolution Image</h1>
+    <h3>Image {{ index + 1 }} of {{ image_sets|length }}</h3>
+    <div class="low-res">
+        <h3>Low-Resolution Image</h3>
+        <img src="{{ image_set['low_res'] }}" alt="Low Resolution">
+    </div>
+    <form method="post">
+        <input type="hidden" name="img_name" value="{{ image_set['low_res'].split('/')[-1] }}">
+        <input type="hidden" name="index" value="{{ index }}">
+        <div class="super-res-images">
+            {% for img in image_set['super_res_images'] %}
+            <div class="image-container">
+                <label>
+                    <input type="radio" name="selected_model" value="{{ img['model'] }}" required>
+                    <img src="{{ img['path'] }}" alt="{{ img['model'] }}">
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="submit-button">
+            <button type="submit">Submit and Next</button>
+        </div>
+    </form>
+</body>
+</html>
