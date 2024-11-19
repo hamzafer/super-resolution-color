@@ -1,6 +1,7 @@
 # Ignore dataset and results folders
 dataset/
 results/
+models/
 models/AnimeSR
 models/BSRGAN
 models/ResShift
