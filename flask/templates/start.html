@@ -5,18 +5,16 @@
     <title>Start Test</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f2f2f2;
+            background-color: #121212;
+            color: #ffffff;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
         .form-container {
-            background-color: #fff;
-            padding: 30px 40px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
             text-align: center;
         }
         h2 {
@@ -24,30 +22,47 @@
         }
         input[type="text"], input[type="number"] {
             width: 80%;
-            padding: 10px;
+            padding: 12px;
             margin: 10px 0;
-            border: 1px solid #ccc;
+            border: none;
             border-radius: 4px;
+            font-size: 16px;
         }
         .test-selection {
             margin-top: 20px;
         }
         .test-selection button {
-            background-color: #008CBA;
+            background-color: #1E88E5;
             color: white;
-            padding: 12px 24px;
+            padding: 14px 28px;
             margin: 10px;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
+            transition: background-color 0.3s;
         }
         .test-selection button:hover {
-            background-color: #007BB5;
+            background-color: #1565C0;
         }
         .error {
-            color: red;
+            color: #FF5252;
             margin-top: 10px;
+        }
+        /* Instructions */
+        .instructions {
+            background-color: #1E1E1E;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: left;
+            line-height: 1.6;
+        }
+        .instructions h3 {
+            margin-top: 0;
+        }
+        .instructions p {
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -65,6 +80,20 @@
         {% if error %}
         <div class="error">{{ error }}</div>
         {% endif %}
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3>Instructions</h3>
+            <p>
+                In this test, you will be presented with a low-resolution image at the center of the screen and four super-resolution images in the corners. Your task is to select the super-resolution image that you believe best enhances the original image's quality.
+            </p>
+            <p>
+                To view a super-resolution image in detail, click on it to open it in full-screen mode. To select an image, click the "Select" button labeled with the image number. Once you select an image, the test will automatically proceed to the next image.
+            </p>
+            <p>
+                The test consists of multiple images. Please take your time to assess each one carefully.
+            </p>
+        </div>
     </div>
 </body>
 </html>

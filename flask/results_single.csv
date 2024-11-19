@@ -10,3 +10,8 @@ timestamp,name,age,image_name,selected_model
 2024-11-19T10:15:29.204654,Hamza Zafar,23,butterfly.png,Real-ESRGAN
 2024-11-19T10:15:46.025619,Hamza Zafar,23,ADE.png,Real-ESRGAN
 2024-11-19T10:15:52.905390,Hamza Zafar,23,foreman.png,ResShift
+2024-11-19T13:09:36.269868,Muhammad Hamza Zafar,88,ADE.png,BSRGAN
+2024-11-19T13:09:41.558204,Muhammad Hamza Zafar,88,foreman.png,ResShift
+2024-11-19T13:09:45.417736,Muhammad Hamza Zafar,88,oldphoto6.png,ResShift
+2024-11-19T13:09:46.915863,Muhammad Hamza Zafar,88,butterfly.png,ResShift
+2024-11-19T13:09:48.817668,Muhammad Hamza Zafar,88,comic3.png,ResShift
