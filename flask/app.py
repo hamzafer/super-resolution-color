@@ -4,6 +4,7 @@ import random
 import csv
 from datetime import datetime
 from flask_session import Session
+import uuid
 
 app = Flask(__name__)
 
@@ -57,22 +58,19 @@ def start():
         # Collect user information
         name = request.form.get('name')
         age = request.form.get('age')
-        test_type = 'single'
 
-        if not name or not age or not test_type:
-            error = "Please provide name, age, and select a test type."
+        if not name or not age:
+            error = "Please provide name and age."
             return render_template('start.html', error=error)
 
         # Store in session
         session['name'] = name
         session['age'] = age
-        session['test_type'] = test_type
+        session['start_time'] = datetime.now()  # Store start timestamp
+        session['test_id'] = str(uuid.uuid4())  # Generate unique test ID
 
-        if test_type == 'single':
-            return redirect(url_for('test'))
-        else:
-            error = "Invalid test type selected."
-            return render_template('start.html', error=error)
+        # Redirect to the single-image selection test
+        return redirect(url_for('test'))
 
     return render_template('start.html')
 
@@ -87,6 +85,7 @@ def test():
         img_name = request.form.get('img_name')
         name = session.get('name')
         age = session.get('age')
+        test_id = session.get('test_id')
 
         if not selected_model:
             error = "Please select a super-resolution image."
@@ -94,13 +93,14 @@ def test():
             current_set = image_sets[index]
             return render_template('index.html', image_set=current_set, index=index, total_images=len(image_sets), error=error)
 
-        # Save the result
-        with open('results_single.csv', 'a', newline='') as csvfile:
-            fieldnames = ['timestamp', 'name', 'age', 'image_name', 'selected_model']
+        # Append current selection to uncompleted CSV
+        with open('results_uncompleted.csv', 'a', newline='') as csvfile:
+            fieldnames = ['test_id', 'timestamp', 'name', 'age', 'image_name', 'selected_model']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            if os.stat('results_single.csv').st_size == 0:
+            if os.stat('results_uncompleted.csv').st_size == 0:
                 writer.writeheader()
             writer.writerow({
+                'test_id': test_id,
                 'timestamp': datetime.now().isoformat(),
                 'name': name,
                 'age': age,
@@ -112,6 +112,38 @@ def test():
         index = int(request.form.get('index', 0)) + 1
 
         if index >= len(image_sets):
+            # Calculate total time taken
+            start_time = session.get('start_time')
+            total_time = (datetime.now() - start_time).total_seconds()
+
+            # Collect all test data for this test ID
+            completed_rows = []
+            with open('results_uncompleted.csv', 'r') as infile:
+                reader = csv.DictReader(infile)
+                for row in reader:
+                    if row['test_id'] == test_id:
+                        row['total_time'] = total_time
+                        row['status'] = 'Completed'
+                        completed_rows.append(row)
+
+            # Save to completed CSV
+            with open('results_completed.csv', 'a', newline='') as csvfile:
+                fieldnames = ['test_id', 'timestamp', 'name', 'age', 'image_name', 'selected_model', 'total_time', 'status']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                if os.stat('results_completed.csv').st_size == 0:
+                    writer.writeheader()
+                writer.writerows(completed_rows)
+
+            # Remove the test from the uncompleted CSV
+            with open('results_uncompleted.csv', 'r') as infile, open('temp.csv', 'w', newline='') as outfile:
+                reader = csv.DictReader(infile)
+                writer = csv.DictWriter(outfile, fieldnames=reader.fieldnames)
+                writer.writeheader()
+                for row in reader:
+                    if row['test_id'] != test_id:
+                        writer.writerow(row)
+            os.replace('temp.csv', 'results_uncompleted.csv')
+
             return render_template('thank_you.html')
         else:
             current_set = image_sets[index]

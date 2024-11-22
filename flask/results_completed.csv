@@ -1,0 +1,6 @@
+test_id,timestamp,name,age,image_name,selected_model,total_time,status
+028582d1-4ab1-4f11-9cf3-ffc9e05f2207,2024-11-22T22:19:19.790382,Muhammad Hamza Zafar,13,oldphoto6.png,ResShift,5.984268,Completed
+028582d1-4ab1-4f11-9cf3-ffc9e05f2207,2024-11-22T22:19:20.429714,Muhammad Hamza Zafar,13,foreman.png,SwinIR,5.984268,Completed
+028582d1-4ab1-4f11-9cf3-ffc9e05f2207,2024-11-22T22:19:21.156982,Muhammad Hamza Zafar,13,butterfly.png,SwinIR,5.984268,Completed
+028582d1-4ab1-4f11-9cf3-ffc9e05f2207,2024-11-22T22:19:22.338568,Muhammad Hamza Zafar,13,comic3.png,SwinIR,5.984268,Completed
+028582d1-4ab1-4f11-9cf3-ffc9e05f2207,2024-11-22T22:19:23.350022,Muhammad Hamza Zafar,13,ADE.png,ResShift,5.984268,Completed

@@ -143,6 +143,27 @@
             cursor: pointer;
         }
 
+        /* Progress Bar Styles */
+        .progress-container {
+            width: 100%;
+            background-color: #f3f3f3;
+            height: 30px;
+            margin: 10px 0;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #4CAF50; /* Green */
+            text-align: center;
+            line-height: 30px; /* Match container height */
+            color: white;
+            font-weight: bold;
+            transition: width 0.3s ease-in-out;
+        }
+
         /* Modal Select Button */
         .modal-select-button {
             position: absolute;
@@ -166,6 +187,11 @@
 </head>
 <body>
     <div class="container">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" style="width: {{ progress }}%;">{{ progress }}%</div>
+        </div>
+
         <!-- Grid Container -->
         <div class="grid-container">
             {% for img in image_set['super_res_images'] %}
