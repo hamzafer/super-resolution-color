@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import os
 import random
-import csv
+import uuid
 from datetime import datetime
 from flask_session import Session
-import uuid
+from googleapiclient.discovery import build
+from google.oauth2.service_account import Credentials
 
 app = Flask(__name__)
 
@@ -14,6 +15,55 @@ app.secret_key = 'your_secret_key_here'  # Replace with a secure secret key
 # Configure server-side session
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
+
+# Google Sheets Configuration
+SERVICE_ACCOUNT_FILE = 'service_account.json'  # Path to your service account key
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+SPREADSHEET_ID = '1vu-CJqYwCMzOKUum-U1aF_lGAVPIpU9AhdlmnA-7U3A'  # Replace with your Google Sheet ID
+
+def get_sheet_service():
+    """Authenticate and return the Sheets API service."""
+    credentials = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+    service = build("sheets", "v4", credentials=credentials)
+    return service
+
+def append_to_sheet(sheet_name, values):
+    """Append a row of data to the specified sheet."""
+    service = get_sheet_service()
+    range_name = f"{sheet_name}!A1"
+
+    # Define headers for each sheet
+    headers = {
+        "incomplete": ["test_id", "timestamp", "name", "age", "image_name", "selected_model", "status"],
+        "complete": ["test_id", "name", "age", "completion_time", "total_time", "status"],
+        "open-qs": ["test_id", "timestamp", "reason", "feedback"]
+    }
+
+    # Check if the sheet is empty (no headers)
+    result = service.spreadsheets().values().get(
+        spreadsheetId=SPREADSHEET_ID,
+        range=range_name
+    ).execute()
+
+    if "values" not in result or not result["values"]:  # No headers exist
+        # Add headers as the first row
+        header_body = {"values": [headers[sheet_name]]}
+        service.spreadsheets().values().update(
+            spreadsheetId=SPREADSHEET_ID,
+            range=range_name,
+            valueInputOption="RAW",
+            body=header_body
+        ).execute()
+
+    # Append the actual data
+    body = {"values": [values]}
+    service.spreadsheets().values().append(
+        spreadsheetId=SPREADSHEET_ID,
+        range=range_name,
+        valueInputOption="RAW",
+        insertDataOption="INSERT_ROWS",
+        body=body
+    ).execute()
 
 # Configuration
 LOW_RES_DIR = "static/images/selected_256"
@@ -93,28 +143,18 @@ def test():
             current_set = image_sets[index]
             progress = int((index / len(image_sets)) * 100)
             return render_template(
-                'index.html', 
-                image_set=current_set, 
-                index=index, 
-                total_images=len(image_sets), 
-                progress=progress, 
+                'index.html',
+                image_set=current_set,
+                index=index,
+                total_images=len(image_sets),
+                progress=progress,
                 error=error
             )
 
-        # Save the result
-        with open('results_uncompleted.csv', 'a', newline='') as csvfile:
-            fieldnames = ['test_id', 'timestamp', 'name', 'age', 'image_name', 'selected_model']
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            if os.stat('results_uncompleted.csv').st_size == 0:
-                writer.writeheader()
-            writer.writerow({
-                'test_id': test_id,
-                'timestamp': datetime.now().isoformat(),
-                'name': name,
-                'age': age,
-                'image_name': img_name,
-                'selected_model': selected_model
-            })
+        # Save the result to the "incomplete" sheet
+        append_to_sheet('incomplete', [
+            test_id, datetime.now().isoformat(), name, age, img_name, selected_model, "In Progress"
+        ])
 
         # Move to the next image set or finish
         index = int(request.form.get('index', 0)) + 1
@@ -124,98 +164,52 @@ def test():
             start_time = session.get('start_time')
             total_time = (datetime.now() - start_time).total_seconds()
 
-            # Collect all test data for this test ID
-            completed_rows = []
-            with open('results_uncompleted.csv', 'r') as infile:
-                reader = csv.DictReader(infile)
-                for row in reader:
-                    if row['test_id'] == test_id:
-                        row['total_time'] = total_time
-                        row['status'] = 'Completed'
-                        completed_rows.append(row)
-
-            # Save to completed CSV
-            with open('results_completed.csv', 'a', newline='') as csvfile:
-                fieldnames = ['test_id', 'timestamp', 'name', 'age', 'image_name', 'selected_model', 'total_time', 'status']
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                if os.stat('results_completed.csv').st_size == 0:
-                    writer.writeheader()
-                writer.writerows(completed_rows)
-
-            # Remove the test from the uncompleted CSV
-            with open('results_uncompleted.csv', 'r') as infile, open('temp.csv', 'w', newline='') as outfile:
-                reader = csv.DictReader(infile)
-                writer = csv.DictWriter(outfile, fieldnames=reader.fieldnames)
-                writer.writeheader()
-                for row in reader:
-                    if row['test_id'] != test_id:
-                        writer.writerow(row)
-            os.replace('temp.csv', 'results_uncompleted.csv')
+            # Save to the "complete" sheet
+            append_to_sheet('complete', [
+                test_id, name, age, datetime.now().isoformat(), total_time, "Completed"
+            ])
 
             return redirect(url_for('thank_you'))
-        else:
-            current_set = image_sets[index]
-            progress = int((index / len(image_sets)) * 100)
-            return render_template(
-                'index.html', 
-                image_set=current_set, 
-                index=index, 
-                total_images=len(image_sets), 
-                progress=progress
-            )
+
+        current_set = image_sets[index]
+        progress = int((index / len(image_sets)) * 100)
+        return render_template(
+            'index.html',
+            image_set=current_set,
+            index=index,
+            total_images=len(image_sets),
+            progress=progress
+        )
 
     index = int(request.args.get('index', 0))
     if index >= len(image_sets):
-        return render_template('thank_you.html')
+        return redirect(url_for('thank_you'))
     current_set = image_sets[index]
     progress = int((index / len(image_sets)) * 100)
     return render_template(
-        'index.html', 
-        image_set=current_set, 
-        index=index, 
-        total_images=len(image_sets), 
+        'index.html',
+        image_set=current_set,
+        index=index,
+        total_images=len(image_sets),
         progress=progress
     )
 
 @app.route('/thank_you', methods=['GET', 'POST'])
 def thank_you():
-    # Handle form submission
     if request.method == 'POST':
         reason = request.form.get('reason')
         feedback = request.form.get('feedback')
         test_id = session.get('test_id')
 
-        # Ensure test_id is available in the session
-        if not test_id:
-            return redirect(url_for('start'))
-
-        # Save responses to the optional_responses.csv
-        try:
-            with open('optional_responses.csv', 'a', newline='') as csvfile:
-                fieldnames = ['test_id', 'reason', 'feedback']
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-                # Write header if file is empty
-                if os.stat('optional_responses.csv').st_size == 0:
-                    writer.writeheader()
-
-                writer.writerow({
-                    'test_id': test_id,
-                    'reason': reason if reason else "No reason provided",
-                    'feedback': feedback if feedback else "No feedback provided"
-                })
-
-        except Exception as e:
-            print(f"Error saving feedback: {e}")
-            return render_template(
-                'thank_you.html', 
-                error="An error occurred while saving your feedback. Please try again."
-            )
+        # Append feedback to the "open-qs" sheet
+        append_to_sheet('open-qs', [
+            test_id, datetime.now().isoformat(), reason if reason else "No reason provided",
+            feedback if feedback else "No feedback provided"
+        ])
 
         # Redirect to a final "Thank You" screen
         return redirect(url_for('start'))
 
-    # Render the "Thank You" form
     return render_template('thank_you.html')
 
 # Redirect root to start page
