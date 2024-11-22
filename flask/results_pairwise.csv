@@ -1,3 +1,12 @@
 timestamp,name,age,image_name,model_a,model_b,selected_model
 2024-11-19T10:22:53.520737,CONTROL,23,comic3.png,ResShift,BSRGAN,ResShift
 2024-11-19T10:22:57.753614,CONTROL,23,comic3.png,SwinIR,BSRGAN,SwinIR
+2024-11-19T19:23:54.242361,Kongsberg Challenge Your Extreme,65,foreman.png,BSRGAN,ResShift,ResShift
+2024-11-19T19:23:57.171385,Kongsberg Challenge Your Extreme,65,foreman.png,SwinIR,Real-ESRGAN,SwinIR
+2024-11-19T19:23:59.530708,Kongsberg Challenge Your Extreme,65,foreman.png,BSRGAN,SwinIR,BSRGAN
+2024-11-19T19:24:01.376116,Kongsberg Challenge Your Extreme,65,foreman.png,ResShift,Real-ESRGAN,ResShift
+2024-11-19T19:24:02.694923,Kongsberg Challenge Your Extreme,65,foreman.png,SwinIR,ResShift,ResShift
+2024-11-19T19:24:04.206593,Kongsberg Challenge Your Extreme,65,foreman.png,BSRGAN,Real-ESRGAN,BSRGAN
+2024-11-19T19:24:05.686544,Kongsberg Challenge Your Extreme,65,butterfly.png,BSRGAN,SwinIR,SwinIR
+2024-11-19T19:24:06.979510,Kongsberg Challenge Your Extreme,65,butterfly.png,Real-ESRGAN,BSRGAN,Real-ESRGAN
+2024-11-19T19:24:08.272655,Kongsberg Challenge Your Extreme,65,butterfly.png,Real-ESRGAN,SwinIR,SwinIR

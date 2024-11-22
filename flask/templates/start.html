@@ -68,13 +68,12 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Welcome to the Image Quality Assessment Test</h2>
+        <h2>Welcome to the Super Resolution Psychophysical Experiment</h2>
         <form method="post">
             <input type="text" name="name" placeholder="Enter your name" required><br>
             <input type="number" name="age" placeholder="Enter your age" min="1" required><br>
             <div class="test-selection">
-                <button type="submit" name="test_type" value="single">Start Single Image Selection Test</button>
-                <button type="submit" name="test_type" value="pairwise">Start Pairwise Comparison Test</button>
+                <button type="submit" name="test_type" value="single">Start</button>
             </div>
         </form>
         {% if error %}
@@ -92,6 +91,9 @@
             </p>
             <p>
                 The test consists of multiple images. Please take your time to assess each one carefully.
+            </p>
+            <p>
+                Note: All the data collected in this test is anonymous and will be used for research purposes only.
             </p>
         </div>
     </div>
