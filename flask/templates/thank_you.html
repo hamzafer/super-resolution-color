@@ -12,6 +12,8 @@
             background-color: #121212; /* Dark background */
             color: #e0e0e0; /* Light text for dark mode */
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
         .message-container {
             background-color: #1e1e1e; /* Dark gray container */
@@ -19,17 +21,62 @@
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Darker shadow */
             text-align: center;
+            width: 90%;
+            max-width: 600px;
         }
         h2 {
             margin-bottom: 20px;
-            color: #f5f5f5; /* Slightly brighter for heading */
+            color: #4caf50; /* Green for success */
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .optional-questions {
+            margin-top: 20px;
+        }
+        .optional-questions label {
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .optional-questions textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            resize: none;
+            font-size: 14px;
+        }
+        .optional-questions button {
+            margin-top: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .optional-questions button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
     <div class="message-container">
-        <h2>Thank You for Participating!</h2>
-        <p>Your responses have been recorded.</p>
+        <h2>🎉 Thank You for Participating! 🎉</h2>
+        <p>Your responses have been recorded. You're awesome! 🌟</p>
+        <p>Before you go, could you share a bit about your choices? 🤔</p>
+        <form class="optional-questions" method="post">
+            <label for="reason">✨ Why did you pick certain images? (e.g., colors, details, lack of artifacts)</label>
+            <textarea id="reason" name="reason" rows="4" placeholder="Tell us your thoughts! ✍️"></textarea>
+            
+            <label for="feedback">💬 Any feedback for us? (Optional)</label>
+            <textarea id="feedback" name="feedback" rows="3" placeholder="We'd love to hear your ideas! 💡"></textarea>
+            
+            <button type="submit">Submit Responses 🚀</button>
+        </form>
     </div>
 </body>
 </html>

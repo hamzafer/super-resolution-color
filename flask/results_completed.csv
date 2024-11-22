@@ -4,3 +4,35 @@ test_id,timestamp,name,age,image_name,selected_model,total_time,status
 028582d1-4ab1-4f11-9cf3-ffc9e05f2207,2024-11-22T22:19:21.156982,Muhammad Hamza Zafar,13,butterfly.png,SwinIR,5.984268,Completed
 028582d1-4ab1-4f11-9cf3-ffc9e05f2207,2024-11-22T22:19:22.338568,Muhammad Hamza Zafar,13,comic3.png,SwinIR,5.984268,Completed
 028582d1-4ab1-4f11-9cf3-ffc9e05f2207,2024-11-22T22:19:23.350022,Muhammad Hamza Zafar,13,ADE.png,ResShift,5.984268,Completed
+6cf7dfe2-ba9b-4e4a-8ed9-fc09ba6ab2ca,2024-11-22T22:25:22.498997,Muhammad Hamza Zafar,23,foreman.png,ResShift,10.955126,Completed
+6cf7dfe2-ba9b-4e4a-8ed9-fc09ba6ab2ca,2024-11-22T22:25:24.127531,Muhammad Hamza Zafar,23,ADE.png,ResShift,10.955126,Completed
+6cf7dfe2-ba9b-4e4a-8ed9-fc09ba6ab2ca,2024-11-22T22:25:27.665380,Muhammad Hamza Zafar,23,butterfly.png,BSRGAN,10.955126,Completed
+6cf7dfe2-ba9b-4e4a-8ed9-fc09ba6ab2ca,2024-11-22T22:25:29.771661,Muhammad Hamza Zafar,23,comic3.png,Real-ESRGAN,10.955126,Completed
+6cf7dfe2-ba9b-4e4a-8ed9-fc09ba6ab2ca,2024-11-22T22:25:30.989190,Muhammad Hamza Zafar,23,oldphoto6.png,ResShift,10.955126,Completed
+e13167c4-cc76-4071-80e6-ad5fbc98cb89,2024-11-22T22:26:42.146960,Hamza Zafar,32,foreman.png,ResShift,139.979709,Completed
+e13167c4-cc76-4071-80e6-ad5fbc98cb89,2024-11-22T22:28:21.343214,Hamza Zafar,32,foreman.png,ResShift,139.979709,Completed
+e13167c4-cc76-4071-80e6-ad5fbc98cb89,2024-11-22T22:28:33.266859,Hamza Zafar,32,ADE.png,ResShift,139.979709,Completed
+e13167c4-cc76-4071-80e6-ad5fbc98cb89,2024-11-22T22:28:34.767319,Hamza Zafar,32,butterfly.png,ResShift,139.979709,Completed
+e13167c4-cc76-4071-80e6-ad5fbc98cb89,2024-11-22T22:28:48.174127,Hamza Zafar,32,comic3.png,SwinIR,139.979709,Completed
+e13167c4-cc76-4071-80e6-ad5fbc98cb89,2024-11-22T22:28:59.644967,Hamza Zafar,32,oldphoto6.png,BSRGAN,139.979709,Completed
+5e6640f7-91a1-4d84-9e53-fb504fbbd48f,2024-11-22T22:30:17.614389,Muhammad Hamza Zafar,32,foreman.png,ResShift,46.532846,Completed
+5e6640f7-91a1-4d84-9e53-fb504fbbd48f,2024-11-22T22:30:56.013811,Muhammad Hamza Zafar,32,foreman.png,ResShift,46.532846,Completed
+5e6640f7-91a1-4d84-9e53-fb504fbbd48f,2024-11-22T22:30:57.284318,Muhammad Hamza Zafar,32,ADE.png,ResShift,46.532846,Completed
+5e6640f7-91a1-4d84-9e53-fb504fbbd48f,2024-11-22T22:30:57.805295,Muhammad Hamza Zafar,32,butterfly.png,ResShift,46.532846,Completed
+5e6640f7-91a1-4d84-9e53-fb504fbbd48f,2024-11-22T22:30:58.923776,Muhammad Hamza Zafar,32,comic3.png,SwinIR,46.532846,Completed
+5e6640f7-91a1-4d84-9e53-fb504fbbd48f,2024-11-22T22:31:01.587594,Muhammad Hamza Zafar,32,oldphoto6.png,BSRGAN,46.532846,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T22:56:46.642593,Muhammad Hamza Zafar,23,foreman.png,SwinIR,7.939966,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T22:56:48.309504,Muhammad Hamza Zafar,23,butterfly.png,ResShift,7.939966,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T22:56:49.968082,Muhammad Hamza Zafar,23,oldphoto6.png,SwinIR,7.939966,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T22:56:50.419685,Muhammad Hamza Zafar,23,comic3.png,ResShift,7.939966,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T22:56:51.810469,Muhammad Hamza Zafar,23,ADE.png,SwinIR,7.939966,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T22:58:23.790477,Muhammad Hamza Zafar,23,foreman.png,SwinIR,106.123717,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T22:58:26.221055,Muhammad Hamza Zafar,23,oldphoto6.png,BSRGAN,106.123717,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T22:58:27.645050,Muhammad Hamza Zafar,23,ADE.png,SwinIR,106.123717,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T22:58:29.215676,Muhammad Hamza Zafar,23,butterfly.png,Real-ESRGAN,106.123717,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T22:58:29.991380,Muhammad Hamza Zafar,23,comic3.png,SwinIR,106.123717,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T23:02:35.344304,Muhammad Hamza Zafar,23,ADE.png,Real-ESRGAN,357.67943,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T23:02:36.910459,Muhammad Hamza Zafar,23,foreman.png,ResShift,357.67943,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T23:02:38.400172,Muhammad Hamza Zafar,23,oldphoto6.png,SwinIR,357.67943,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T23:02:39.998763,Muhammad Hamza Zafar,23,butterfly.png,SwinIR,357.67943,Completed
+e2204511-8e88-4c8b-9014-60a2a04b04ae,2024-11-22T23:02:41.550013,Muhammad Hamza Zafar,23,comic3.png,SwinIR,357.67943,Completed

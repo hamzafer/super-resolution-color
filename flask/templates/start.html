@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Start Test</title>
+    <title>Super Resolution Experiment</title>
     <style>
         body {
             background-color: #121212;
@@ -14,7 +14,7 @@
         .form-container {
             max-width: 600px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
             text-align: center;
         }
         h2 {
@@ -22,11 +22,11 @@
         }
         input[type="text"], input[type="number"] {
             width: 80%;
-            padding: 12px;
+            padding: 10px;
             margin: 10px 0;
             border: none;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 14px;
         }
         .test-selection {
             margin-top: 20px;
@@ -34,12 +34,12 @@
         .test-selection button {
             background-color: #1E88E5;
             color: white;
-            padding: 14px 28px;
+            padding: 10px 20px;
             margin: 10px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
             transition: background-color 0.3s;
         }
         .test-selection button:hover {
@@ -49,26 +49,30 @@
             color: #FF5252;
             margin-top: 10px;
         }
-        /* Instructions */
-        .instructions {
-            background-color: #1E1E1E;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
-            text-align: left;
+        /* Instructions Styling */
+        .instructions-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 10px;
             line-height: 1.6;
         }
-        .instructions h3 {
-            margin-top: 0;
+        .instructions {
+            text-align: left;
         }
-        .instructions p {
-            margin-bottom: 10px;
+        .instructions ul {
+            padding-left: 20px;
+        }
+        .gif-demo img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h2>Welcome to the Super Resolution Psychophysical Experiment</h2>
+        <h2>Welcome to the Super Resolution Experiment</h2>
         <form method="post">
             <input type="text" name="name" placeholder="Enter your name" required><br>
             <input type="number" name="age" placeholder="Enter your age" min="1" required><br>
@@ -79,22 +83,22 @@
         {% if error %}
         <div class="error">{{ error }}</div>
         {% endif %}
-
-        <!-- Instructions -->
-        <div class="instructions">
-            <h3>Instructions</h3>
-            <p>
-                In this test, you will be presented with a low-resolution image at the center of the screen and four super-resolution images in the corners. Your task is to select the super-resolution image that you believe best enhances the original image's quality.
-            </p>
-            <p>
-                To view a super-resolution image in detail, click on it to open it in full-screen mode. To select an image, click the "Select" button labeled with the image number. Once you select an image, the test will automatically proceed to the next image.
-            </p>
-            <p>
-                The test consists of multiple images. Please take your time to assess each one carefully.
-            </p>
-            <p>
-                Note: All the data collected in this test is anonymous and will be used for research purposes only.
-            </p>
+        <div class="instructions-container">
+            <div class="instructions">
+                <p><strong>How it works:</strong></p>
+                <ul>
+                    <li>A low-resolution image will appear at the center.</li>
+                    <li>Four enhanced images will be in the corners.</li>
+                    <li>Click to zoom in, then hit "Select" for your choice.</li>
+                </ul>
+                <p>Take your time, there’s no rush! Each choice will automatically load the next task.</p>
+                <p style="font-size: 0.9em; color: #aaaaaa;">
+                    🔒 Rest assured, all data collected is used solely for research purposes.
+                </p>
+                <div class="gif-demo">
+                    <img src="{{ url_for('static', filename='tutorial.gif') }}" alt="Demo GIF">
+                </div>
+            </div>
         </div>
     </div>
 </body>

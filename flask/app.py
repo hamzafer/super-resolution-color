@@ -91,9 +91,17 @@ def test():
             error = "Please select a super-resolution image."
             index = int(request.form.get('index', 0))
             current_set = image_sets[index]
-            return render_template('index.html', image_set=current_set, index=index, total_images=len(image_sets), error=error)
+            progress = int((index / len(image_sets)) * 100)
+            return render_template(
+                'index.html', 
+                image_set=current_set, 
+                index=index, 
+                total_images=len(image_sets), 
+                progress=progress, 
+                error=error
+            )
 
-        # Append current selection to uncompleted CSV
+        # Save the result
         with open('results_uncompleted.csv', 'a', newline='') as csvfile:
             fieldnames = ['test_id', 'timestamp', 'name', 'age', 'image_name', 'selected_model']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -144,17 +152,71 @@ def test():
                         writer.writerow(row)
             os.replace('temp.csv', 'results_uncompleted.csv')
 
-            return render_template('thank_you.html')
+            return redirect(url_for('thank_you'))
         else:
             current_set = image_sets[index]
-            return render_template('index.html', image_set=current_set, index=index, total_images=len(image_sets))
+            progress = int((index / len(image_sets)) * 100)
+            return render_template(
+                'index.html', 
+                image_set=current_set, 
+                index=index, 
+                total_images=len(image_sets), 
+                progress=progress
+            )
 
     index = int(request.args.get('index', 0))
     if index >= len(image_sets):
         return render_template('thank_you.html')
     current_set = image_sets[index]
-    return render_template('index.html', image_set=current_set, index=index, total_images=len(image_sets))
+    progress = int((index / len(image_sets)) * 100)
+    return render_template(
+        'index.html', 
+        image_set=current_set, 
+        index=index, 
+        total_images=len(image_sets), 
+        progress=progress
+    )
 
+@app.route('/thank_you', methods=['GET', 'POST'])
+def thank_you():
+    # Handle form submission
+    if request.method == 'POST':
+        reason = request.form.get('reason')
+        feedback = request.form.get('feedback')
+        test_id = session.get('test_id')
+
+        # Ensure test_id is available in the session
+        if not test_id:
+            return redirect(url_for('start'))
+
+        # Save responses to the optional_responses.csv
+        try:
+            with open('optional_responses.csv', 'a', newline='') as csvfile:
+                fieldnames = ['test_id', 'reason', 'feedback']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+                # Write header if file is empty
+                if os.stat('optional_responses.csv').st_size == 0:
+                    writer.writeheader()
+
+                writer.writerow({
+                    'test_id': test_id,
+                    'reason': reason if reason else "No reason provided",
+                    'feedback': feedback if feedback else "No feedback provided"
+                })
+
+        except Exception as e:
+            print(f"Error saving feedback: {e}")
+            return render_template(
+                'thank_you.html', 
+                error="An error occurred while saving your feedback. Please try again."
+            )
+
+        # Redirect to a final "Thank You" screen
+        return redirect(url_for('start'))
+
+    # Render the "Thank You" form
+    return render_template('thank_you.html')
 
 # Redirect root to start page
 @app.route('/')
