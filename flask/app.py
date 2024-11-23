@@ -21,11 +21,14 @@ SPREADSHEET_ID = '1vu-CJqYwCMzOKUum-U1aF_lGAVPIpU9AhdlmnA-7U3A'
 def get_sheet_service():
     """Authenticate and return the Sheets API service."""
     try:
-        os.environ["GOOGLE_API_USE_CLIENT_CERTIFICATE"] = "False"  # Disable deprecated file_cache
+        # Decode Base64 string to JSON
         credentials_json = base64.b64decode(os.getenv("GOOGLE_CREDENTIALS_BASE64")).decode("utf-8")
         service_account_info = json.loads(credentials_json)
+
+        # Authenticate using service account information
         credentials = Credentials.from_service_account_info(service_account_info)
-        return build("sheets", "v4", credentials=credentials)
+        service = build("sheets", "v4", credentials=credentials, cache_discovery=False)
+        return service
     except json.JSONDecodeError as e:
         print("Error decoding JSON from Base64: ", e)
         raise
