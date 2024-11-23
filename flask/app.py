@@ -175,8 +175,9 @@ def test():
             )
 
         current_time = datetime.now()
-        time_spent = (current_time - session['last_image_time']).total_seconds()
-        session['last_image_time'] = current_time
+        last_image_time = datetime.fromisoformat(session['last_image_time'])
+        time_spent = (current_time - last_image_time).total_seconds()
+        session['last_image_time'] = current_time.isoformat()
 
         session['results'].append({
             "timestamp": current_time.isoformat(),
