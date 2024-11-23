@@ -12,14 +12,13 @@ from google.oauth2.service_account import Credentials
 app = Flask(__name__)
 
 # Configure secret key for session management
-app.secret_key = 'your_secret_key_here'
+app.secret_key = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
-# Configure server-side session
-app.config['SESSION_TYPE'] = 'filesystem'
+# Use null session type to avoid file writes in serverless environments
+app.config['SESSION_TYPE'] = 'null'
 Session(app)
 
 # Google Sheets Configuration
-SERVICE_ACCOUNT_FILE = 'service_account.json'
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 SPREADSHEET_ID = '1vu-CJqYwCMzOKUum-U1aF_lGAVPIpU9AhdlmnA-7U3A'
 
@@ -103,7 +102,7 @@ image_sets = [
                 "model": model,
                 "path": os.path.join(MODELS[model], img_name).replace('static/', '', 1),
             }
-            for model in random.sample(MODELS.keys(), len(MODELS))
+            for model in random.sample(list(MODELS.keys()), len(MODELS))
         ],
         "img_name": img_name,
     }
