@@ -35,7 +35,7 @@ def append_to_sheet(sheet_name, values):
     # Define headers for each sheet
     headers = {
         "sessions": ["test_id", "name", "age", "start_time"],
-        "completed": ["test_id", "timestamp", "name", "age", "image_name", "selected_model", "status"],
+        "completed": ["test_id", "timestamp", "name", "age", "image_name", "selected_model", "time_spent"],
         "open-qs": ["test_id", "timestamp", "reason", "feedback"]
     }
 
@@ -101,7 +101,7 @@ def save_session_to_sheet(test_id, name, age, start_time):
     append_to_sheet("sessions", [[test_id, name, age, start_time.isoformat()]])
 
 # Helper: Save completed results to the "completed" sheet
-def save_results_to_sheet(test_id, name, age, results, completion_time, total_time):
+def save_results_to_sheet(test_id, name, age, results):
     # Prepare all rows for batch write
     rows = [
         [
@@ -111,19 +111,10 @@ def save_results_to_sheet(test_id, name, age, results, completion_time, total_ti
             age,
             result["image_name"],
             result["selected_model"],
-            "Completed",
+            result["time_spent"],
         ]
         for result in results
     ]
-    # Add summary row
-    rows.append([
-        test_id,
-        name,
-        age,
-        completion_time.isoformat(),
-        total_time,
-        "Completed",
-    ])
     append_to_sheet("completed", rows)
 
 @app.route('/start', methods=['GET', 'POST'])
@@ -141,6 +132,7 @@ def start():
         session['start_time'] = datetime.now()
         session['test_id'] = str(uuid.uuid4())
         session['results'] = []
+        session['last_image_time'] = datetime.now()  # Track time spent per image
 
         save_session_to_sheet(session['test_id'], name, age, session['start_time'])
 
@@ -171,10 +163,16 @@ def test():
                 error=error
             )
 
+        # Calculate time spent on the current image
+        current_time = datetime.now()
+        time_spent = (current_time - session['last_image_time']).total_seconds()
+        session['last_image_time'] = current_time
+
         session['results'].append({
-            "timestamp": datetime.now().isoformat(),
+            "timestamp": current_time.isoformat(),
             "image_name": img_name,
             "selected_model": selected_model,
+            "time_spent": time_spent,
         })
 
         index += 1
@@ -208,10 +206,8 @@ def saving():
     name = session['name']
     age = session['age']
     results = session['results']
-    completion_time = datetime.now()
-    total_time = (completion_time - session['start_time']).total_seconds()
 
-    save_results_to_sheet(test_id, name, age, results, completion_time, total_time)
+    save_results_to_sheet(test_id, name, age, results)
 
     return redirect(url_for('thank_you'))
 
