@@ -4,7 +4,7 @@ import random
 import uuid
 import base64
 import json
-from datetime import datetime
+from datetime import datetime, timezone  # Added timezone import
 from flask_session import Session
 from googleapiclient.discovery import build
 from google.oauth2.service_account import Credentials
@@ -140,10 +140,10 @@ def start():
 
         session['name'] = name
         session['age'] = age
-        session['start_time'] = datetime.now()
+        session['start_time'] = datetime.now(timezone.utc)  # Made timezone-aware
         session['test_id'] = str(uuid.uuid4())
         session['results'] = []
-        session['last_image_time'] = datetime.now()
+        session['last_image_time'] = datetime.now(timezone.utc)  # Made timezone-aware
 
         save_session_to_sheet(session['test_id'], name, age, session['start_time'])
 
@@ -174,10 +174,14 @@ def test():
                 error=error
             )
 
-        current_time = datetime.now()
-        last_image_time = datetime.fromisoformat(session['last_image_time'])
+        current_time = datetime.now(timezone.utc)  # Made timezone-aware
+        last_image_time = session['last_image_time']
+
+        # Ensure both datetime objects are timezone-aware
+        if isinstance(last_image_time, str):
+            last_image_time = datetime.fromisoformat(last_image_time)
         time_spent = (current_time - last_image_time).total_seconds()
-        session['last_image_time'] = current_time.isoformat()
+        session['last_image_time'] = current_time
 
         session['results'].append({
             "timestamp": current_time.isoformat(),
@@ -217,10 +221,10 @@ def saving():
     name = session.get('name')
     age = session.get('age')
     results = session.get('results', [])
-    start_time = session.get('start_time', datetime.now())
+    start_time = session.get('start_time', datetime.now(timezone.utc))  # Made timezone-aware
 
     # Calculate total time spent
-    total_time = (datetime.now() - start_time).total_seconds()
+    total_time = (datetime.now(timezone.utc) - start_time).total_seconds()
 
     # Save results to the "completed" sheet
     save_results_to_sheet(test_id, name, age, results, total_time)
@@ -237,7 +241,7 @@ def thank_you():
 
         # Append optional feedback to the "open-qs" sheet
         append_to_sheet('open-qs', [
-            [test_id, datetime.now().isoformat(), reason if reason else "No reason provided",
+            [test_id, datetime.now(timezone.utc).isoformat(), reason if reason else "No reason provided",
             feedback if feedback else "No feedback provided"]
         ])
 
