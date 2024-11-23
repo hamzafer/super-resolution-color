@@ -18,6 +18,16 @@ app.secret_key = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b8
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 SPREADSHEET_ID = '1vu-CJqYwCMzOKUum-U1aF_lGAVPIpU9AhdlmnA-7U3A'
 
+# Configuration
+LOW_RES_DIR = "static/images/selected_256"
+MODELS = {
+    "ResShift": "static/images/selected_256_ResShift",
+    "BSRGAN": "static/images/selected_256_BSRGAN",
+    "SwinIR": "static/images/selected_256_SwinIR",
+    "Real-ESRGAN": "static/images/selected_256_RealESRGAN",
+}
+NUM_IMAGES = 5  # Number of images to display
+
 def get_sheet_service():
     """Authenticate and return the Sheets API service."""
     try:
@@ -78,32 +88,25 @@ def append_to_sheet(sheet_name, values):
     except Exception as e:
         print(f"Error appending to Google Sheet: {e}")
 
-# Configuration
-LOW_RES_DIR = "static/images/selected_256"
-MODELS = {
-    "ResShift": "static/images/selected_256_ResShift",
-    "BSRGAN": "static/images/selected_256_BSRGAN",
-    "SwinIR": "static/images/selected_256_SwinIR",
-    "Real-ESRGAN": "static/images/selected_256_RealESRGAN",
-}
-
 # Prepare the dataset
 image_names = os.listdir(LOW_RES_DIR)
 random.shuffle(image_names)
-image_sets = [
-    {
-        "low_res": os.path.join(LOW_RES_DIR, img_name).replace('static/', '', 1),
-        "super_res_images": [
-            {
-                "model": model,
-                "path": os.path.join(MODELS[model], img_name).replace('static/', '', 1),
-            }
-            for model in random.sample(list(MODELS.keys()), len(MODELS))
-        ],
+
+image_sets = []
+for img_name in image_names[:NUM_IMAGES]:
+    low_res_path = os.path.join(LOW_RES_DIR, img_name).replace('static/', '', 1)
+    super_res_images = [
+        {
+            "model": model,
+            "path": os.path.join(MODELS[model], img_name).replace('static/', '', 1),
+        }
+        for model in random.sample(list(MODELS.keys()), len(MODELS))
+    ]
+    image_sets.append({
+        "low_res": low_res_path,
+        "super_res_images": super_res_images,
         "img_name": img_name,
-    }
-    for img_name in image_names[:5]
-]
+    })
 
 # Helper: Save session info to the "sessions" sheet
 def save_session_to_sheet(test_id, name, age, start_time):
