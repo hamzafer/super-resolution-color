@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import os
 import random
 import uuid
+import base64
+import json
 from datetime import datetime
 from flask_session import Session
 from googleapiclient.discovery import build
@@ -23,9 +25,21 @@ SPREADSHEET_ID = '1vu-CJqYwCMzOKUum-U1aF_lGAVPIpU9AhdlmnA-7U3A'
 
 def get_sheet_service():
     """Authenticate and return the Sheets API service."""
-    credentials = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-    service = build("sheets", "v4", credentials=credentials)
-    return service
+    try:
+        # Decode Base64 string to JSON
+        credentials_json = base64.b64decode(os.getenv("GOOGLE_CREDENTIALS_BASE64")).decode("utf-8")
+        service_account_info = json.loads(credentials_json)
+
+        # Authenticate using service account information
+        credentials = Credentials.from_service_account_info(service_account_info)
+        service = build("sheets", "v4", credentials=credentials)
+        return service
+    except json.JSONDecodeError as e:
+        print("Error decoding JSON from Base64: ", e)
+        raise
+    except Exception as e:
+        print("Error creating Google Sheets service: ", e)
+        raise
 
 def append_to_sheet(sheet_name, values):
     """Batch append rows of data to the specified sheet."""

@@ -9,3 +9,6 @@ models/SwinIR
 models/z-ignored-models/latent-diffusion
 service_account.json
 flask/flask_session/
+.env
+flask/decoded.json
+flask/service_account_base64.txt
