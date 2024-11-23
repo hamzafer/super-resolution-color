@@ -14,10 +14,6 @@ app = Flask(__name__)
 # Configure secret key for session management
 app.secret_key = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
-# Use null session type to avoid file writes in serverless environments
-app.config['SESSION_TYPE'] = 'null'
-Session(app)
-
 # Google Sheets Configuration
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 SPREADSHEET_ID = '1vu-CJqYwCMzOKUum-U1aF_lGAVPIpU9AhdlmnA-7U3A'
