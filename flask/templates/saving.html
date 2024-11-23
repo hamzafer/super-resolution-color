@@ -38,6 +38,12 @@
             margin-top: 20px;
         }
     </style>
+    <script>
+        // Redirect to thank you page after 2 seconds
+        setTimeout(() => {
+            window.location.href = "{{ redirect_url }}";
+        }, 2000);
+    </script>
 </head>
 <body>
     <div class="container">

@@ -101,7 +101,7 @@ def save_session_to_sheet(test_id, name, age, start_time):
     append_to_sheet("sessions", [[test_id, name, age, start_time.isoformat()]])
 
 # Helper: Save completed results to the "completed" sheet
-def save_results_to_sheet(test_id, name, age, results):
+def save_results_to_sheet(test_id, name, age, results, total_time):
     # Prepare all rows for batch write
     rows = [
         [
@@ -115,6 +115,8 @@ def save_results_to_sheet(test_id, name, age, results):
         ]
         for result in results
     ]
+    # Add a row at the end with total time
+    rows.append([test_id, name, age, "Total Time", total_time])
     append_to_sheet("completed", rows)
 
 @app.route('/start', methods=['GET', 'POST'])
@@ -132,7 +134,7 @@ def start():
         session['start_time'] = datetime.now()
         session['test_id'] = str(uuid.uuid4())
         session['results'] = []
-        session['last_image_time'] = datetime.now()  # Track time spent per image
+        session['last_image_time'] = datetime.now()
 
         save_session_to_sheet(session['test_id'], name, age, session['start_time'])
 
@@ -163,7 +165,6 @@ def test():
                 error=error
             )
 
-        # Calculate time spent on the current image
         current_time = datetime.now()
         time_spent = (current_time - session['last_image_time']).total_seconds()
         session['last_image_time'] = current_time
@@ -202,27 +203,35 @@ def test():
 
 @app.route('/saving', methods=['GET'])
 def saving():
-    test_id = session['test_id']
-    name = session['name']
-    age = session['age']
-    results = session['results']
+    test_id = session.get('test_id')
+    name = session.get('name')
+    age = session.get('age')
+    results = session.get('results', [])
+    start_time = session.get('start_time', datetime.now())
 
-    save_results_to_sheet(test_id, name, age, results)
+    # Calculate total time spent
+    total_time = (datetime.now() - start_time).total_seconds()
 
-    return redirect(url_for('thank_you'))
+    # Save results to the "completed" sheet
+    save_results_to_sheet(test_id, name, age, results, total_time)
+
+    # Render saving.html to show a loading screen
+    return render_template('saving.html', redirect_url=url_for('thank_you'))
 
 @app.route('/thank_you', methods=['GET', 'POST'])
 def thank_you():
     if request.method == 'POST':
         reason = request.form.get('reason')
         feedback = request.form.get('feedback')
-        test_id = session['test_id']
+        test_id = session.get('test_id')
 
+        # Append optional feedback to the "open-qs" sheet
         append_to_sheet('open-qs', [
             [test_id, datetime.now().isoformat(), reason if reason else "No reason provided",
             feedback if feedback else "No feedback provided"]
         ])
 
+        # Redirect to the start page
         return redirect(url_for('start'))
 
     return render_template('thank_you.html')
