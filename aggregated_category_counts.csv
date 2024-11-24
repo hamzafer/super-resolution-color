@@ -1,0 +1,13 @@
+Model,Category,Count
+BSRGAN,Bad,4
+BSRGAN,Good,11
+BSRGAN,Neutral,5
+RealESRGAN,Bad,5
+RealESRGAN,Good,9
+RealESRGAN,Neutral,6
+ResShift,Bad,2
+ResShift,Good,11
+ResShift,Neutral,7
+SwinIR,Bad,5
+SwinIR,Good,7
+SwinIR,Neutral,8
