@@ -1,0 +1,206 @@
+Image Processing Log
+====================
+
+Processing low-res images...
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0809x8.png -> dataset/DIV/final/low/0809.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0871x8.png -> dataset/DIV/final/low/0871.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0853x8.png -> dataset/DIV/final/low/0853.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0879x8.png ((255, 234))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0897x8.png ((255, 171))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0876x8.png -> dataset/DIV/final/low/0876.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0817x8.png ((255, 192))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0824x8.png -> dataset/DIV/final/low/0824.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0842x8.png -> dataset/DIV/final/low/0842.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0892x8.png ((255, 160))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0887x8.png -> dataset/DIV/final/low/0887.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0838x8.png -> dataset/DIV/final/low/0838.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0829x8.png -> dataset/DIV/final/low/0829.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0826x8.png ((255, 192))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0893x8.png -> dataset/DIV/final/low/0893.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0899x8.png -> dataset/DIV/final/low/0899.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0869x8.png ((169, 255))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0864x8.png -> dataset/DIV/final/low/0864.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0843x8.png -> dataset/DIV/final/low/0843.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0801x8.png -> dataset/DIV/final/low/0801.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0858x8.png -> dataset/DIV/final/low/0858.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0806x8.png -> dataset/DIV/final/low/0806.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0805x8.png ((255, 192))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0827x8.png ((255, 192))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0807x8.png ((255, 141))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0854x8.png ((255, 133))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0868x8.png -> dataset/DIV/final/low/0868.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0874x8.png -> dataset/DIV/final/low/0874.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0808x8.png -> dataset/DIV/final/low/0808.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0865x8.png ((255, 192))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0900x8.png ((255, 144))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0818x8.png ((255, 192))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0825x8.png -> dataset/DIV/final/low/0825.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0878x8.png ((255, 217))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0810x8.png ((255, 192))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0830x8.png ((255, 102))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0867x8.png ((169, 255))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0847x8.png ((169, 255))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0881x8.png ((255, 157))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0814x8.png -> dataset/DIV/final/low/0814.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0844x8.png ((169, 255))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0895x8.png ((255, 160))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0828x8.png -> dataset/DIV/final/low/0828.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0875x8.png ((255, 192))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0837x8.png -> dataset/DIV/final/low/0837.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0863x8.png ((187, 255))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0872x8.png -> dataset/DIV/final/low/0872.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0861x8.png -> dataset/DIV/final/low/0861.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0802x8.png -> dataset/DIV/final/low/0802.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0890x8.png ((255, 171))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0889x8.png -> dataset/DIV/final/low/0889.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0833x8.png ((255, 193))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0845x8.png -> dataset/DIV/final/low/0845.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0832x8.png -> dataset/DIV/final/low/0832.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0835x8.png ((202, 255))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0852x8.png ((255, 144))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0862x8.png -> dataset/DIV/final/low/0862.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0898x8.png -> dataset/DIV/final/low/0898.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0823x8.png ((255, 160))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0803x8.png ((255, 192))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0855x8.png ((255, 255))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0860x8.png ((255, 192))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0850x8.png -> dataset/DIV/final/low/0850.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0813x8.png ((255, 183))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0848x8.png ((255, 192))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0846x8.png ((255, 171))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0877x8.png ((255, 144))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0891x8.png ((208, 255))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0884x8.png -> dataset/DIV/final/low/0884.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0841x8.png -> dataset/DIV/final/low/0841.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0849x8.png -> dataset/DIV/final/low/0849.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0886x8.png -> dataset/DIV/final/low/0886.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0822x8.png ((255, 199))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0894x8.png ((169, 255))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0816x8.png -> dataset/DIV/final/low/0816.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0819x8.png -> dataset/DIV/final/low/0819.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0856x8.png -> dataset/DIV/final/low/0856.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0836x8.png ((255, 192))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0883x8.png ((255, 172))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0811x8.png -> dataset/DIV/final/low/0811.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0882x8.png -> dataset/DIV/final/low/0882.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0859x8.png -> dataset/DIV/final/low/0859.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0839x8.png -> dataset/DIV/final/low/0839.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0851x8.png ((255, 168))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0870x8.png ((255, 196))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0812x8.png ((255, 192))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0831x8.png -> dataset/DIV/final/low/0831.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0888x8.png -> dataset/DIV/final/low/0888.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0896x8.png -> dataset/DIV/final/low/0896.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0857x8.png ((255, 177))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0815x8.png -> dataset/DIV/final/low/0815.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0834x8.png -> dataset/DIV/final/low/0834.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0804x8.png ((255, 150))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0820x8.png -> dataset/DIV/final/low/0820.png
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0866x8.png ((169, 255))
+Skipped (dimensions mismatch): dataset/DIV/DIV2K_valid_LR_x8/0880x8.png ((169, 255))
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0885x8.png -> dataset/DIV/final/low/0885.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0821x8.png -> dataset/DIV/final/low/0821.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0873x8.png -> dataset/DIV/final/low/0873.png
+Copied: dataset/DIV/DIV2K_valid_LR_x8/0840x8.png -> dataset/DIV/final/low/0840.png
+Processing high-res images...
+Copied: dataset/DIV/X2/0873x2.png -> dataset/DIV/final/high/0873.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0878x2.png ((1020, 870))
+Skipped (dimensions mismatch): dataset/DIV/X2/0803x2.png ((1020, 768))
+Copied: dataset/DIV/X2/0872x2.png -> dataset/DIV/final/high/0872.png
+Copied: dataset/DIV/X2/0882x2.png -> dataset/DIV/final/high/0882.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0891x2.png ((834, 1020))
+Copied: dataset/DIV/X2/0899x2.png -> dataset/DIV/final/high/0899.png
+Copied: dataset/DIV/X2/0819x2.png -> dataset/DIV/final/high/0819.png
+Copied: dataset/DIV/X2/0898x2.png -> dataset/DIV/final/high/0898.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0833x2.png ((1020, 774))
+Copied: dataset/DIV/X2/0887x2.png -> dataset/DIV/final/high/0887.png
+Copied: dataset/DIV/X2/0811x2.png -> dataset/DIV/final/high/0811.png
+Copied: dataset/DIV/X2/0868x2.png -> dataset/DIV/final/high/0868.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0880x2.png ((678, 1020))
+Skipped (dimensions mismatch): dataset/DIV/X2/0865x2.png ((1020, 768))
+Skipped (dimensions mismatch): dataset/DIV/X2/0835x2.png ((810, 1020))
+Copied: dataset/DIV/X2/0874x2.png -> dataset/DIV/final/high/0874.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0863x2.png ((750, 1020))
+Copied: dataset/DIV/X2/0828x2.png -> dataset/DIV/final/high/0828.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0852x2.png ((1020, 576))
+Copied: dataset/DIV/X2/0858x2.png -> dataset/DIV/final/high/0858.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0848x2.png ((1020, 768))
+Skipped (dimensions mismatch): dataset/DIV/X2/0804x2.png ((1020, 600))
+Copied: dataset/DIV/X2/0840x2.png -> dataset/DIV/final/high/0840.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0818x2.png ((1020, 768))
+Skipped (dimensions mismatch): dataset/DIV/X2/0892x2.png ((1020, 642))
+Skipped (dimensions mismatch): dataset/DIV/X2/0807x2.png ((1020, 564))
+Copied: dataset/DIV/X2/0801x2.png -> dataset/DIV/final/high/0801.png
+Copied: dataset/DIV/X2/0885x2.png -> dataset/DIV/final/high/0885.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0851x2.png ((1020, 672))
+Skipped (dimensions mismatch): dataset/DIV/X2/0867x2.png ((678, 1020))
+Skipped (dimensions mismatch): dataset/DIV/X2/0810x2.png ((1020, 768))
+Copied: dataset/DIV/X2/0861x2.png -> dataset/DIV/final/high/0861.png
+Copied: dataset/DIV/X2/0845x2.png -> dataset/DIV/final/high/0845.png
+Copied: dataset/DIV/X2/0853x2.png -> dataset/DIV/final/high/0853.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0866x2.png ((678, 1020))
+Copied: dataset/DIV/X2/0871x2.png -> dataset/DIV/final/high/0871.png
+Copied: dataset/DIV/X2/0808x2.png -> dataset/DIV/final/high/0808.png
+Copied: dataset/DIV/X2/0814x2.png -> dataset/DIV/final/high/0814.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0813x2.png ((1020, 732))
+Copied: dataset/DIV/X2/0820x2.png -> dataset/DIV/final/high/0820.png
+Copied: dataset/DIV/X2/0834x2.png -> dataset/DIV/final/high/0834.png
+Copied: dataset/DIV/X2/0802x2.png -> dataset/DIV/final/high/0802.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0870x2.png ((1020, 786))
+Copied: dataset/DIV/X2/0829x2.png -> dataset/DIV/final/high/0829.png
+Copied: dataset/DIV/X2/0821x2.png -> dataset/DIV/final/high/0821.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0883x2.png ((1020, 690))
+Skipped (dimensions mismatch): dataset/DIV/X2/0817x2.png ((1020, 768))
+Skipped (dimensions mismatch): dataset/DIV/X2/0875x2.png ((1020, 768))
+Skipped (dimensions mismatch): dataset/DIV/X2/0860x2.png ((1020, 768))
+Skipped (dimensions mismatch): dataset/DIV/X2/0855x2.png ((1020, 1020))
+Copied: dataset/DIV/X2/0806x2.png -> dataset/DIV/final/high/0806.png
+Copied: dataset/DIV/X2/0837x2.png -> dataset/DIV/final/high/0837.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0897x2.png ((1020, 684))
+Copied: dataset/DIV/X2/0842x2.png -> dataset/DIV/final/high/0842.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0823x2.png ((1020, 642))
+Skipped (dimensions mismatch): dataset/DIV/X2/0857x2.png ((1020, 708))
+Skipped (dimensions mismatch): dataset/DIV/X2/0900x2.png ((1020, 576))
+Skipped (dimensions mismatch): dataset/DIV/X2/0812x2.png ((1020, 768))
+Copied: dataset/DIV/X2/0884x2.png -> dataset/DIV/final/high/0884.png
+Copied: dataset/DIV/X2/0843x2.png -> dataset/DIV/final/high/0843.png
+Copied: dataset/DIV/X2/0838x2.png -> dataset/DIV/final/high/0838.png
+Copied: dataset/DIV/X2/0831x2.png -> dataset/DIV/final/high/0831.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0826x2.png ((1020, 768))
+Skipped (dimensions mismatch): dataset/DIV/X2/0877x2.png ((1020, 576))
+Skipped (dimensions mismatch): dataset/DIV/X2/0895x2.png ((1020, 642))
+Skipped (dimensions mismatch): dataset/DIV/X2/0844x2.png ((678, 1020))
+Skipped (dimensions mismatch): dataset/DIV/X2/0869x2.png ((678, 1020))
+Skipped (dimensions mismatch): dataset/DIV/X2/0846x2.png ((1020, 684))
+Copied: dataset/DIV/X2/0859x2.png -> dataset/DIV/final/high/0859.png
+Copied: dataset/DIV/X2/0824x2.png -> dataset/DIV/final/high/0824.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0805x2.png ((1020, 768))
+Copied: dataset/DIV/X2/0832x2.png -> dataset/DIV/final/high/0832.png
+Copied: dataset/DIV/X2/0816x2.png -> dataset/DIV/final/high/0816.png
+Copied: dataset/DIV/X2/0841x2.png -> dataset/DIV/final/high/0841.png
+Copied: dataset/DIV/X2/0809x2.png -> dataset/DIV/final/high/0809.png
+Copied: dataset/DIV/X2/0889x2.png -> dataset/DIV/final/high/0889.png
+Copied: dataset/DIV/X2/0839x2.png -> dataset/DIV/final/high/0839.png
+Copied: dataset/DIV/X2/0825x2.png -> dataset/DIV/final/high/0825.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0890x2.png ((1020, 684))
+Copied: dataset/DIV/X2/0815x2.png -> dataset/DIV/final/high/0815.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0881x2.png ((1020, 630))
+Skipped (dimensions mismatch): dataset/DIV/X2/0827x2.png ((1020, 768))
+Copied: dataset/DIV/X2/0876x2.png -> dataset/DIV/final/high/0876.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0847x2.png ((678, 1020))
+Skipped (dimensions mismatch): dataset/DIV/X2/0822x2.png ((1020, 798))
+Copied: dataset/DIV/X2/0864x2.png -> dataset/DIV/final/high/0864.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0830x2.png ((1020, 408))
+Copied: dataset/DIV/X2/0862x2.png -> dataset/DIV/final/high/0862.png
+Copied: dataset/DIV/X2/0888x2.png -> dataset/DIV/final/high/0888.png
+Copied: dataset/DIV/X2/0856x2.png -> dataset/DIV/final/high/0856.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0836x2.png ((1020, 768))
+Copied: dataset/DIV/X2/0850x2.png -> dataset/DIV/final/high/0850.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0854x2.png ((1020, 534))
+Copied: dataset/DIV/X2/0893x2.png -> dataset/DIV/final/high/0893.png
+Skipped (dimensions mismatch): dataset/DIV/X2/0894x2.png ((678, 1020))
+Skipped (dimensions mismatch): dataset/DIV/X2/0879x2.png ((1020, 936))
+Copied: dataset/DIV/X2/0886x2.png -> dataset/DIV/final/high/0886.png
+Copied: dataset/DIV/X2/0896x2.png -> dataset/DIV/final/high/0896.png
+Copied: dataset/DIV/X2/0849x2.png -> dataset/DIV/final/high/0849.png
+Image processing completed.
