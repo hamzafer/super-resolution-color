@@ -1,0 +1,78 @@
+test_id,timestamp,reason,feedback
+7e5fdf32-06ce-4fbb-89f1-9eea94b4b3c5,2024-11-23T21:32:38.069797+00:00,balance between lack of artifacts and realistic look,No feedback provided
+23fe1f39-2849-403b-b322-461557d7fd7b,2024-11-23T22:30:55.740151+00:00,No reason provided,No feedback provided
+7b25656f-6b35-4ecc-aac5-191d4347f5af,2024-11-23T22:51:59.629530+00:00,No reason provided,No feedback provided
+f57dcb8c-917a-49f1-af3d-b3af7da7659b,2024-11-23T22:52:15.287351+00:00,No reason provided,No feedback provided
+be61d245-e975-423b-b22a-e3cfe9b91115,2024-11-23T22:56:03.780113+00:00,No reason provided,No feedback provided
+da6e3d2f-3e6c-4685-8b86-17f355eb234e,2024-11-23T22:59:42.128829+00:00,No reason provided,No feedback provided
+e083ffc3-0d41-47a2-8714-fff0b34b62a4,2024-11-23T23:01:03.686218+00:00,ok,ok
+b456b6d7-203b-4e76-a467-fa848a825509,2024-11-23T23:03:12.479722+00:00,okok,okok
+044afe1f-b7d4-4292-b8c8-a40bb75bc751,2024-11-23T23:46:32.400026+00:00,No reason provided,No feedback provided
+e54bf6aa-8e73-44c6-965d-ffe59fdd1723,2024-11-24T23:00:33.095695+00:00,No reason provided,No feedback provided
+a0cce2ab-f468-463c-b669-4c8e7b3eb4bd,2024-11-24T23:06:14.285960+00:00,yed,yed
+82e21503-a6ff-46d2-b521-7d47206efc4c,2024-11-24T23:31:19.507348+00:00,details and lack of artifacts,No feedback provided
+0ab54e4a-0d21-450e-8b63-87ff6d946027,2024-11-25T00:39:27.523310+00:00,No reason provided,No feedback provided
+d9879233-311f-48b4-ab3b-bf40997deeda,2024-11-25T09:32:56.435877+00:00,I selected images that looked naturally sharp to my eyes including all the details and colors,No feedback provided
+f168a047-fbec-4a8b-b38d-02e6f55538be,2024-11-25T09:37:58.122191+00:00,No reason provided,Need to focus on the background as well e.g like main object is clear like lion not the grass. Need to work on details.
+62e251b1-2a52-46bd-a3a8-ab19176bff30,2024-11-25T09:39:28.430542+00:00,accuracy of high frequency details in the image.,No feedback provided
+6c472352-9334-469b-a03c-e46465d0a4a6,2024-11-25T09:39:29.480479+00:00,Due to contrast of the images,You should enhance the quality of images that include human faces
+3308423d-5dc0-4ca6-acdc-4cb9de415fa7,2024-11-25T09:56:52.110218+00:00,"I picked certain images based on the sharpness, colours, and details.",Keep up sensei!
+10b8cc28-f943-4eaf-8c7c-9d958dab65c1,2024-11-25T10:36:36.975884+00:00,"colors, details, lack of artifacts",No feedback provided
+ffc15819-5460-47d0-a05d-b99fa72fc4a5,2024-11-25T10:41:36.359304+00:00,Details. ,No feedback provided
+4a14cab7-f516-46e7-aab6-cc8ac55a9e41,2024-11-25T10:44:12.689004+00:00,No reason provided,No feedback provided
+4f21e2e5-663d-4380-be59-af7d72929245,2024-11-25T10:49:05.745966+00:00,"details, difference on colour",No feedback provided
+52394403-f7fc-44d4-b8ab-fd5d1a35844d,2024-11-25T11:00:44.269504+00:00,Colors and details,No 👀
+557b189f-5980-43b6-baa6-004c6e0fc806,2024-11-25T11:02:09.930158+00:00,"textures mainly, color and lack of artifacts ",No feedback provided
+d7aa7b6e-aeee-48a7-aad0-b61d75f78457,2024-11-25T11:06:12.308832+00:00,"because of colors
+mostly looked the same to me",will the results be shared with me 
+16c0f839-ee25-4e0f-8df3-e203f27fcca2,2024-11-25T11:18:51.596705+00:00,No reason provided,No feedback provided
+75ddfd3e-8d6a-43eb-a2b9-466a2e0b38ce,2024-11-25T11:33:29.016879+00:00,"1. colors
+2. details (precisely object's edges and corners)",No feedback provided
+d59e05b5-f39d-4eab-a970-39c1eb075abb,2024-11-25T11:44:28.746236+00:00,I focused on the high texture surfaces and patches to decide and that for me was the criteria to decide higher resolution quality. The sharpness of image was also factor,No feedback provided
+066114b4-e63a-4f2d-aba9-9476206aa0c8,2024-11-25T12:11:02.043323+00:00,It was cool! Good luck with the project <3,No feedback provided
+0eb1f15f-8a4e-4537-8277-59730cbf4cb3,2024-11-25T12:47:14.110031+00:00,Details.,No feedback provided
+d425ad4d-7e9f-4782-b768-b20115eaacf9,2024-11-25T12:49:17.084783+00:00,because of pictures clarity ,improve mobile adaptation of the site
+95a76cb4-312a-45c9-adca-1fc4e0953966,2024-11-25T13:02:42.996677+00:00,I mostly looked for the areas where I can find the difference between the images. Mostly like some blur effects and that's how I came to my final decision.,"The images look AI generated. Idk if this is the experiment or the super-resolution of the real images. I believe sometimes I was biased by looking at the images as there were other things which made my decision a bit hard. Like in the AI generated images the people faces are not perfect, they seem blurred in all the images. Which is what I was looking for in certain cases, In real images this won't be the case (Typically the low resolution image would have atrifacts and the high resolution image would have more details). 
+
+But Idk if super-resolution of AI generated was your experiment or not."
+51bdb055-44a5-467c-88d1-e6c8900f86d7,2024-11-25T13:53:05.544653+00:00,No reason provided,No feedback provided
+119c76bb-78b1-4ba5-9a12-17bf5e7701f7,2024-11-25T14:20:02.938453+00:00,"Level of details, color accuracy and high pixel ratio",No feedback provided
+669adc34-0424-4773-940a-29de84b0c076,2024-11-25T14:37:48.222564+00:00,No reason provided,No feedback provided
+85903983-7438-4662-8299-e267ce37d3ea,2024-11-25T14:38:10.124649+00:00,No reason provided,No feedback provided
+ccf2992d-b8ae-45fd-b427-369da4b890d1,2024-11-25T14:40:34.879454+00:00,"When selecting or generating images, I aim to ensure they align closely with the context, requirements, and preferences you've described. Here's why I might choose certain characteristics:
+
+Relevance to Context:
+Images are selected or designed to match your project's specific use case or narrative. For example, if you're working on an IoT-based smart home system, I'd focus on images that visually represent connectivity, devices, or user interfaces.
+
+Appropriate Color Palette:
+Colors play a significant role in evoking the right mood and ensuring clarity. For a modern tech interface, neutral tones with pops of blue or green might symbolize innovation and trust. For a vibrant e-commerce platform, warm or dynamic colors may be chosen.
+
+Details and Usability:
+Detailed visuals that are free of distracting elements make communication clearer. For example, clean diagrams or UI representations are often better than overly stylized ones.
+
+Clarity and Lack of Artifacts:
+High-quality images with smooth lines and no pixelation or compression artifacts are crucial, especially for professional projects. This ensures your output looks polished and credible.
+
+Alignment with Brand or Style:
+If your project has a specific brand or style direction (modern, minimal, playful, etc.), the images are chosen to reflect that tone.",Everything is amazing!!!!!!!!!!!
+cbe9f242-32ed-4a14-8d53-8ef741004a47,2024-11-25T14:58:21.342074+00:00,"Details, Clarity, Less Noise",No feedback provided
+56d05a08-58f4-4feb-843b-efebd34f5afb,2024-11-25T14:59:04.791388+00:00,No reason provided,No feedback provided
+429aa352-e9e6-4c31-bf5e-8e6a13fbb796,2024-11-25T14:59:26.996118+00:00,No reason provided,No feedback provided
+8ace5d4d-83c6-464d-9290-74ba76509476,2024-11-25T15:02:20.794588+00:00,😘,😘
+574b4c0e-f310-40c1-8095-242c347e1d23,2024-11-25T15:29:55.667993+00:00,No reason provided,No feedback provided
+bc9adcba-ad92-4437-a080-5b13333953fa,2024-11-25T15:40:59.599797+00:00,Detailing ,No feedback provided
+2b02ce56-534a-4799-9339-b273a8b27f0a,2024-11-25T16:01:51.071009+00:00,"I think I had three metrics in mind for picking up an image. Sharpness, smoothness and color (saturation / highlights / shadows). I went for the balance between these 3 metrics. Some images were sharpened but they felt a bit saturated and over sharpened. I went with images which had a good balance between sharpness and smoothness and also weren't too saturated or bright when compared to the original image. Hope this helps.  ",No feedback provided
+a9ec9ac1-979f-45f4-bb78-d16593c27208,2024-11-25T16:08:21.041258+00:00,I looked at the sharp edges and the definition of the image if it is capable enough that it doesn't lose its details when I zoom in and out.,You guys are doing good in upscaling. Keep it up. We might need such technology to capture the thieves from CCTV cameras. 
+49488286-e40b-4ef0-9db0-78e399daf83d,2024-11-25T16:14:04.413653+00:00,"For images with small objects I focused on those in the upscaled images provided. For example, a lot of them had things like grains of rice or spices in a market. I picked the best looking ones. For images with faces, I focused on facial features. For images with infrastructure I picked the ones with the sharpest edges and best colors.",No feedback provided
+090f29e6-72a9-48df-8642-be99e172c25e,2024-11-25T16:14:22.237604+00:00,No reason provided,No feedback provided
+aef09059-8c44-4a8f-88ef-43281117b27c,2024-11-25T19:06:43.472003+00:00,The ones in chose looked different in terms of colors,No feedback provided
+c0eba772-ee1b-4f40-bbc8-704735bd4461,2024-11-25T20:06:09.164543+00:00,I would pick one area to evaluate on all the images based on,"Sometimes all images were bad, was tough to choose"
+64f435c5-df6a-490d-9120-f3dce1b7196b,2024-11-25T20:59:40.346904+00:00,I chose the ones which were looking more realistic.,No feedback provided
+d0b46157-651f-4a42-ae10-5f98371eb4d4,2024-11-25T21:02:10.250194+00:00,"shadows, texture details, consistency, artifacts
+",No feedback provided
+f02e91be-0a04-41c6-a35f-9351d058735f,2024-11-25T21:04:56.636221+00:00,No reason provided,No feedback provided
+ae167d90-fd64-4384-9395-eec5bc5d4bcb,2024-11-25T21:49:55.205614+00:00,I compared them and select the one which has more details. ,It's really boring and time consuming thing to select. 
+ae167d90-fd64-4384-9395-eec5bc5d4bcb,2024-11-25T21:51:19.998185+00:00,I compared them and select the one which has more details. ,It's really a fun to select the best image.
+dc8784dd-9298-46d2-9dbb-72cca819030e,2024-11-25T23:25:56.517142+00:00,"Preserving texture played a large part, also faces, and sometimes colors were off. Btw here is a random meme, enjoy: https://www.instagram.com/reel/DCovs3dI9JK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",No feedback provided
+3abbf6e4-c638-4000-8ebc-fdce65c4f587,2024-11-26T02:02:40.428243+00:00,"Mostly because of the sharpness of certain images over other ones. In some pictures, the color contract made a difference in the selection. Some photos were tough to tell so I picked on boards and the writing on it and its clarity. ",No feedback provided
+d5089d3a-b1df-40f8-a6af-a4bc96dab103,2024-11-26T03:23:45.090188+00:00,Color and details ,No feedback provided
