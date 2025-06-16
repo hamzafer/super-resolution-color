@@ -1,51 +1,115 @@
 # Aligning Subjective and Objective Assessments in Super-Resolution Models
 
-This repository contains the code, datasets, and documentation for the project **"Aligning Subjective and Objective Assessments in Super-Resolution Models"**. The goal is to bridge the gap between objective metrics and human perceptual quality through psychophysical experiments.
+A comprehensive study evaluating super-resolution models through both objective metrics and human perception. We compare ResShift, BSRGAN, Real-ESRGAN, and SwinIR using psychophysical experiments with 54+ participants, revealing significant gaps between traditional metrics and human visual preferences.
 
-## Project Overview
-This project aims to:
-- Review and test state-of-the-art (SOTA) super-resolution (SR) models.
-- Conduct a psychophysical experiment to evaluate subjective quality on SR outputs.
-- Compare subjective user preferences with traditional objective metrics (PSNR, SSIM, LPIPS).
-  
-## Workflow
-1. **Database Preparation**: Collect and prepare real-world and animation datasets.
-2. **Model Inference**: Run SOTA SR models to generate high-resolution images.
-3. **Objective Metrics Calculation**: Compute objective metrics on generated images.
-4. **Subjective Assessment**: Conduct a user study to rate image quality.
-5. **Analysis**: Compare subjective preferences with objective metrics to assess alignment.
+🌐 **[View Project Website](https://hamzafer.github.io/super-resolution-color/)**
 
-## Repository Structure
-```
-├── data/                # Datasets for real-world and animation images
-├── models/              # SOTA SR models used for inference
-├── scripts/             # Scripts for data preparation, inference, and metric calculation
-├── experiments/         # Psychophysical experiment setup and results
-├── results/             # Generated high-res images and metric scores
-├── analysis/            # Code and notebooks for comparison and analysis
-└── README.md            # Project overview and instructions
-```
+## 📋 Abstract
 
-## Installation
-Clone the repository and install the required packages:
+This research investigates the alignment between subjective human perception and objective computational metrics in super-resolution models. Through systematic evaluation of state-of-the-art SR models and controlled psychophysical experiments, we bridge the gap between computational metrics and human visual quality assessment. Our findings reveal significant discrepancies between traditional metrics like PSNR/SSIM and human preference, with ResShift demonstrating superior performance across both objective metrics and subjective evaluations.
+
+## 🎯 Key Findings
+
+- **ResShift's Superiority**: Consistently outperformed other models in both objective metrics (PSNR: 25.01, LPIPS: 0.231) and subjective evaluations (624/1620 selections)
+- **Metric Misalignment**: Traditional metrics like PSNR and SSIM show weak correlation with human preference  
+- **Statistical Validation**: Chi-Square test (χ² = 61.40, p < 0.001) confirms significant preference differences
+- **Perceptual Factors**: Users prioritize visual naturalness over pixel-perfect accuracy
+
+## 🔬 Methodology
+
+### Experiment 1: Quick Evaluation Interface
+- **Participants**: 54 observers
+- **Images**: 30 total images
+- **Setup**: Choose best HR image from 4 randomized options (1020×676px) around LR center image (255×169px)
+- **Duration**: ~15 minutes per participant
+
+### Experiment 2: Pairwise Comparison
+- **Participants**: 15 observers  
+- **Comparisons**: 900 pairwise comparisons (10 images, 60 pairs per person)
+- **Setup**: BenQ calibrated monitor, sRGB, D65, 80 cd/m²
+- **Duration**: ~15 minutes per participant
+
+### Models Evaluated
+- **ResShift**: Diffusion-based super-resolution
+- **BSRGAN**: Blind super-resolution GAN
+- **Real-ESRGAN**: Enhanced SRGAN for real-world images  
+- **SwinIR**: Transformer-based super-resolution
+
+## 📊 Results Summary
+
+| Model | PSNR↑ | SSIM↑ | LPIPS↓ | CLIPIQA↑ | Exp1 Selections | Exp2 Selections |
+|-------|--------|--------|---------|-----------|-----------------|-----------------|
+| ResShift | **25.01** | **0.677** | **0.231** | **0.592** | **624** | **309** |
+| SwinIR | 23.99 | 0.667 | 0.238 | 0.564 | 377 | 220 |
+| RealESRGAN | 24.04 | 0.665 | 0.254 | 0.523 | 351 | 228 |
+| BSRGAN | 24.42 | 0.659 | 0.259 | 0.581 | 268 | 143 |
+
+## 🚀 Getting Started
+
+### View Results
+Visit our interactive project website: **[hamzafer.github.io/super-resolution-color](https://hamzafer.github.io/super-resolution-color/)**
+
+### Run Locally
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-pip install -r requirements.txt
+# Clone the repository
+git clone https://github.com/hamzafer/super-resolution-color.git
+cd super-resolution-color
+
+# Serve the website locally
+python3 -m http.server 8000
+# Visit http://localhost:8000
 ```
 
-## Usage
-1. **Data Preparation**: Place datasets in the `data/` directory.
-2. **Run Inference**: Use `scripts/inference.py` to generate high-res images from SR models.
-3. **Calculate Metrics**: Run `scripts/calculate_metrics.py` to compute objective metrics.
-4. **Conduct Subjective Assessment**: Set up and run the psychophysical experiment as outlined in `experiments/`.
-5. **Analyze Results**: Use `analysis/` for comparing subjective and objective results.
+### Flask Application
+```bash
+# Navigate to flask directory
+cd flask/
 
-## Results
-Results of the analysis, including comparisons of objective and subjective assessments, are stored in the `results/` and `analysis/` directories.
+# Install dependencies
+pip install flask
 
-## Contributing
-Feel free to submit pull requests for improvements, bug fixes, or new features related to SR models and psychophysical assessment techniques.
+# Run the application
+python app.py
+```
 
-## License
-This project is licensed under the MIT License.
+## 📈 Statistical Analysis
+
+- **Bradley-Terry Model**: Used for ranking model abilities
+- **Chi-Square Test**: Confirmed statistical significance (p < 0.001)
+- **Confidence Intervals**: 95% confidence intervals for pairwise comparisons
+- **Correlation Analysis**: Between objective metrics and subjective preferences
+
+## 📝 Citation
+
+```bibtex
+@inproceedings{zafar2025super_resolution,
+  title={Aligning Subjective and Objective Assessments in Super-Resolution Models},
+  author={Zafar, Muhammad Hamza and Hardeberg, Jon Y.},
+  booktitle={Scandinavian Conference on Image Analysis (SCIA)},
+  year={2025}
+}
+```
+
+## 👥 Authors
+
+- **[Muhammad Hamza Zafar](https://www.linkedin.com/in/ihamzafer/)** - NTNU, Norwegian University of Science and Technology
+- **[Jon Y. Hardeberg](https://orcid.org/0000-0003-1150-2498)** - NTNU, Norwegian University of Science and Technology
+
+## 🏛️ Conference
+
+Presented at **[SCIA 2025](https://scia2025.org/)** - Scandinavian Conference on Image Analysis
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🔗 Links
+
+- 🌐 **Project Website**: [hamzafer.github.io/super-resolution-color](https://hamzafer.github.io/super-resolution-color/)
+- 📄 **Paper**: [Coming Soon]
+- 💾 **Dataset**: [Coming Soon]
+- 🏛️ **Conference**: [SCIA 2025](https://scia2025.org/)
+
+---
+
+**Keywords**: Super-Resolution, Computer Vision, Human Perception, Psychophysical Experiments, Image Quality Assessment, SCIA 2025
