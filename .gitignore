@@ -11,3 +11,4 @@ service_account.json
 .env
 flask/decoded.json
 flask/service_account_base64.txt
+latex/
