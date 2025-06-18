@@ -1,4 +1,5 @@
 # Aligning Subjective and Objective Assessments in Super-Resolution Models
+<img width="428" alt="image" src="https://github.com/user-attachments/assets/a1c4e9dc-d7a3-4552-851f-b1be5ee0c6dd" />
 
 A comprehensive study evaluating super-resolution models through both objective metrics and human perception. We compare ResShift, BSRGAN, Real-ESRGAN, and SwinIR using psychophysical experiments with 54+ participants, revealing significant gaps between traditional metrics and human visual preferences.
 
