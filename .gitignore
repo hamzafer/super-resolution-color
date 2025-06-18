@@ -12,3 +12,4 @@ service_account.json
 flask/decoded.json
 flask/service_account_base64.txt
 latex/
+.DS_Store
