@@ -65,12 +65,20 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       function copyBibtex() {
-        const bibtex = `@inproceedings{zafar2025super_resolution,
-          title={Aligning Subjective and Objective Assessments in Super-Resolution Models},
-          author={Zafar, Muhammad Hamza and Hardeberg, Jon Y.},
-          booktitle={Scandinavian Conference on Image Analysis (SCIA)},
-          year={2025}
-        }`;
+        const bibtex = `@InProceedings{10.1007/978-3-031-95918-9_4,
+author="Zafar, Muhammad Hamza
+and Hardeberg, Jon Y.",
+editor="Petersen, Jens
+and Dahl, Vedrana Andersen",
+title="Aligning Subjective and Objective Assessments in Super-Resolution Models",
+booktitle="Image Analysis",
+year="2025",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="47--60",
+abstract="The evaluation of super-resolution (SR) models remains a challenge due to discrepancies between objective metrics and human perception. This study assesses four state-of-the-art SR models, including ResShift, Real-ESRGAN, BSRGAN, and SwinIR, through both computational metrics and human-centered evaluations. Standard metrics such as PSNR, SSIM, LPIPS, and CLIPIQA were used to quantify fidelity and perceptual alignment, while subjective assessments were conducted through online and controlled lab-based experiments. Results indicate that ResShift consistently achieves superior perceptual quality, while BSRGAN, despite competitive objective scores, ranks lower in human evaluations. To the best of our knowledge, this is the first study to provide an in-depth subjective evaluation of ResShift alongside a systematic comparison with other SR models. These findings underscore the limitations of traditional metrics and emphasize the need for hybrid evaluation approaches that integrate subjective assessments. Code and Data Available at https://github.com/hamzafer/super-resolution-color.",
+isbn="978-3-031-95918-9"
+}`;
         navigator.clipboard.writeText(bibtex).then(function() {
           alert('BibTeX copied to clipboard!');
         }, function() {
@@ -119,7 +127,7 @@
             <div class="publication-links">
               <span class="link-block">
                 <a href="https://link.springer.com/chapter/10.1007/978-3-031-95918-9_4" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
                   <span>Paper</span>
                 </a>
               </span>
@@ -130,9 +138,9 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="far fa-images"></i></span>
-                  <span>Dataset</span>
+                <a href="scia_poster.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-images"></i></span>
+                  <span>Poster</span>
                 </a>
               </span>
               <span class="link-block">
