@@ -1,4 +1,5 @@
 # Aligning Subjective and Objective Assessments in Super-Resolution Models
+
 <img width="603" alt="image" src="https://github.com/user-attachments/assets/78e92131-5a63-452e-bef7-f9d27aa4c2f1" />
 
 A comprehensive study evaluating super-resolution models through both objective metrics and human perception. We compare ResShift, BSRGAN, Real-ESRGAN, and SwinIR using psychophysical experiments with 54+ participants, revealing significant gaps between traditional metrics and human visual preferences.
@@ -83,11 +84,17 @@ python app.py
 ## 📝 Citation
 
 ```bibtex
-@inproceedings{zafar2025super_resolution,
-  title={Aligning Subjective and Objective Assessments in Super-Resolution Models},
-  author={Zafar, Muhammad Hamza and Hardeberg, Jon Y.},
-  booktitle={Scandinavian Conference on Image Analysis (SCIA)},
-  year={2025}
+@InProceedings{10.1007/978-3-031-95918-9_4,
+author="Zafar, Muhammad Hamza
+and Hardeberg, Jon Y.",
+editor="Petersen, Jens
+and Dahl, Vedrana Andersen",
+title="Aligning Subjective and Objective Assessments in Super-Resolution Models",
+booktitle="Image Analysis",
+year="2025",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="47--60"
 }
 ```
 
@@ -98,7 +105,7 @@ python app.py
 
 ## 🏛️ Conference
 
-Presented at **[SCIA 2025](https://scia2025.org/)** - Scandinavian Conference on Image Analysis
+Presented and Published in **[SCIA 2025](https://scia2025.org/)** - Scandinavian Conference on Image Analysis
 
 ## 📄 License
 
@@ -107,8 +114,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 🔗 Links
 
 - 🌐 **Project Website**: [hamzafer.github.io/super-resolution-color](https://hamzafer.github.io/super-resolution-color/)
-- 📄 **Paper**: [Coming Soon]
-- 💾 **Dataset**: [Coming Soon]
+- 📄 **Paper**: [Springer Link](https://link.springer.com/chapter/10.1007/978-3-031-95918-9_4)
+- � **Poster**: [SCIA 2025 Poster](https://hamzafer.github.io/super-resolution-color/scia_poster.pdf)
 - 🏛️ **Conference**: [SCIA 2025](https://scia2025.org/)
 
 ---
